@@ -1,0 +1,31 @@
+/** @type {import('tailwindcss').Config} */
+export default {
+  content: [
+    "./index.html",
+    "./src/**/*.{js,ts,jsx,tsx}",
+  ],
+  theme: {
+    extend: {
+      maxWidth: {
+        'bodyWidth': '1170px',
+      },
+      textColor:{
+        "secondaryColor" : '#000',
+        "primaryColor" : '#fff'
+      },
+      screens:{
+        'tablet': {"min": '769px',  'max': '992px'},
+        'mobile' :{'max' : '768px'},
+        'laptop' :  {'min' : '1024px'}
+      },
+      fontFamily: {
+        'primary': ['Inter', 'sans-serif'],
+        'secondary': ['Poppins', 'sans-serif']
+      },
+      colors: {
+        'primary' : '#F5F5F5'
+      }
+    },
+  },
+  plugins: [],
+}
