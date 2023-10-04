@@ -14,9 +14,10 @@ export default {
         "primaryColor" : '#fff'
       },
       screens:{
-        'tablet': {"min": '769px',  'max': '992px'},
-        'mobile' :{'max' : '768px'},
-        'laptop' :  {'min' : '1024px'}
+        'tablet': {"min": '768px',  'max': '992px'},
+        'mobile' :{'max' : '767px'},
+        'laptop' :  {'min' : '1024px'},
+         'mini' : {'min' : '320px', 'max': '413px'}
       },
       fontFamily: {
         'primary': ['Inter', 'sans-serif'],

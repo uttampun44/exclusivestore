@@ -27,7 +27,7 @@ const product = {
     },
     {
         id: 4,
-        productName: "S Series Conmfor Chair",
+        productName: "S Series Comfort Chair",
         price: 375,
         quantity: 25,
         realPrice: 400,
