@@ -1,12 +1,19 @@
 import React, { useEffect, useState } from 'react'
 import {Link} from 'react-router-dom'
 import { Carousel } from 'react-carousel-minimal';
-import ContextApi from '../../context api/Context';
+import ContextApi from '../../contextapi/Context';
 import { useContext } from 'react';
+import Sales from './Sales';
+import SmartphoneIcon from '@mui/icons-material/Smartphone';
+import ComputerIcon from '@mui/icons-material/Computer';
+import WatchIcon from '@mui/icons-material/Watch';
+import CameraAltIcon from '@mui/icons-material/CameraAlt';
+import SportsEsportsIcon from '@mui/icons-material/SportsEsports';
+
 
 function Home() {
 
-    const {products, setProducts} = useContext(ContextApi);
+    const {products} = useContext(ContextApi);
 
    const carousel = [
      {
@@ -22,31 +29,6 @@ function Home() {
       objectFit: 'fill'
      }
    ]
-    const fethProduct = async () =>{
-        try {
-             const response = await fetch('/api/products', {
-                method: 'GET',
-                mode: 'cors',
-                headers: {
-                    'Content-Type' : 'application/json'
-                },
-                body:JSON.stringify()
-             })
-
-             const data = await response.json();
-
-             console.log(data.products)
-             if (response.status === 200) {
-              setProducts(data.products);
-            }
-
-        } catch (error) {
-           throw new Error
-        }
-    }
-    useEffect(() =>{
-      fethProduct()
-    }, [])
 
   return (
     <section className='hero_section'>
@@ -77,7 +59,7 @@ function Home() {
     </div>
 
     <section className='today_deal'>
-                 <div className='deal_container max-w-bodyWidth mx-auto mt-[6em] pl-8'>
+                 <div className='deal_container max-w-bodyWidth mx-auto mt-[6em] pl-8 mobile:pl-4 mobile:mt-0 border-b-2'>
                        <div className='deal_title flex items-center gap-4'>
                            <div className='deal_box bg-[#DB4444] w-[2%] h-[70px] rounded'>
 
@@ -89,57 +71,136 @@ function Home() {
 
                        {/* flash sales */}
                        <div className='flash_sales_cantainer mt-6 mb-10'>
-                           <div className='flash_sales_row flex gap-[4rem] mobile:gap-9'>
+                           <div className='flash_sales_row flex gap-[4rem] mobile:gap-5 mobile:px-2'>
 
                            <div className='flash_sales_title self-end'>
-                               <h1 className='text-secondary font-primary text-2xl font-semibold leading-10 mobile:text-lg'>Flash Sales</h1>
+                               <h1 className='text-secondary font-primary text-2xl font-semibold leading-10 mobile:text-base'>Flash Sales</h1>
                            </div>
                            <div className='days_limit_offer flex gap-4'>
                                <div className='offer_days'>
                                    <p className='text-secondary font-secondary text-xs leading-5 font-medium '>Days</p>
-                                   <p className='text-secondary font-primary text-3xl font-bold leading-8 mobile:flex mobile:text-lg'>03 <span>:</span></p>
+                                   <p className='text-secondary font-primary text-3xl font-bold leading-8  mobile:text-sm mobile:leading-4'>03 <span>:</span></p>
                                </div>
                                <div className='offer_hours'>
                                  <p className='text-secondary font-secondary text-xs leading-5 font-medium'>Hours</p>
-                                 <p className='text-secondary font-primary text-3xl font-bold leading-8 mobile:flex mobile:text-lg'>04  <span>:</span></p>
+                                 <p className='text-secondary font-primary text-3xl font-bold leading-8  mobile:text-sm mobile:leading-4'>04  <span>:</span></p>
                                </div>
                                <div className='offer_minutes'>
                                   <p className='text-secondary font-secondary text-xs leading-5 font-medium'>Minutes</p>
-                                  <p className='text-secondary font-primary text-3xl font-bold leading-8 mobile:flex mobile:text-lg'>30 <span>:</span></p>
+                                  <p className='text-secondary font-primary text-3xl font-bold leading-8  mobile:text-sm mobile:leading-4'>30 <span>:</span></p>
                                </div>
                                <div className='offer_seconds'>
                                    <p className='text-secondary font-secondary text-xs leading-5 font-medium'>Seconds</p>
-                                   <p className='text-secondary font-primary text-3xl font-bold leading-8 mobile:text-lg'>03</p>
+                                   <p className='text-secondary font-primary text-3xl font-bold leading-8 mobile:text-sm mobile:leading-4'>03</p>
                                </div>
                            </div>
                            </div>
                        </div>
 
                        {/* product carousel */}
-                       <div className='product_gallery flex justify-between items-center mb-14 tablet:flex-wrap mobile:flex-wrap mobile:row-y-4'>
-                             {
+                       <div className='product_gallery flex justify-between items-end mb-14 mobile:row-y-4'>
+
+                           {
                                 products.slice(0, 5).map((product) =>{
                                   return(
-                                    <div className='products grid mobile:gap-y-4 mobile:w-[100%] pr-4 gap-y-4' key={product.id} >
-                                      <img src={product.image} alt='product_image' className='w-[146px] h-[140px] object-contain'/>
-                                       <div className='product_price'>
-                                       <p className='product_name font-secondary text-base leading-5 font-semibold'>{product.productName}</p>
-                                         <p className='font-secondary text-[#DB4444]'>$ {product.price}</p>
-                                       </div>
-
-                                       <div className='add_to_cart'>
-                                           <button className='bg-black w-[100%] text-primary py-2 font-secondary leading-6 font-medium text-base rounded'>Add To Cart</button>
-                                       </div>
-                                    </div>
+                                    <Sales key={product.id} {...product}/>
                                   )
                                 })
                              }
+
                        </div>
                        <div className='view_products flex justify-center my-16'>
-                                  <Link to='/products' className='bg-[#DB4444] py-4 text-base font-secondary leading-6 px-12 font-medium text-white'>View All Products</Link>
+                                  <Link to='/products' className='bg-[#DB4444] py-4 text-base font-secondary leading-6 px-12 font-medium text-white mobile:px-4 mobile:text-xs'>View All Products</Link>
                        </div>
                  </div>
             </section>
+
+            {/* browse by category */}
+
+                <section className='browse_by_category'>
+                        <div className='browse_by_category_container max-w-bodyWidth mt-20 mx-auto mobile:px-4 tablet:px-4'>
+                             <div className='browse_ctegory flex items-center gap-4'>
+                                 <div className='bg-[#DB4444] w-[2%] h-[70px] rounded'>
+
+                                 </div>
+                                 <div className='browse_categories_box'>
+                                      <p className='text-secondary text-base leading-5 font-semibold text-[#DB4444]'>Category</p>
+                                 </div>
+                             </div>
+
+                             <div className='browse_title mt-10'>
+                                    <h2 className='text-secondary font-primary text-2xl font-semibold leading-10 mobile:text-base'>Browse By Category</h2>
+                             </div>
+
+                             <div className='browse_category_icon mt-14 flex justify-between items-center mb-12 mobile:justify-normal mobile:gap-2 mini:justify-center'>
+                                  <div className='browse_phones py-7 px-10 rounded border-2 text-center tablet:px-5 tablet:py-5 mobile:px-4 mobile:py-4 mini:px-2 mini:py-2 hover:bg-[#DB4444] hover:text-white mini:w-[20%] cursor-pointer'>
+                                     <SmartphoneIcon className='mobile:!text-sm'/>
+                                     <p className='font-normal leading-5 text-base font-secondary mt-3 mobile:text-xs mini:text-[8px]'>Phones</p>
+                                  </div>
+                                  <div className='browse_computers py-7 px-10 rounded border-2 text-center tablet:px-5 tablet:py-5 mobile:px-4 mobile:py-4 mini:px-2 mini:py-2 hover:bg-[#DB4444] hover:text-white mini:w-[20%] cursor-pointer'>
+                                      <ComputerIcon className='mobile:!text-sm'/>
+                                      <p className='font-normal leading-5 text-base font-secondary mt-3 mobile:text-xs mini:text-[8px]'>Computers</p>
+                                  </div>
+
+                                  <div className='browse_smart_watch py-7 px-10 rounded border-2 text-center tablet:px-5 tablet:py-5 mobile:px-4 mobile:py-2 mini:px-2 mini:py-2 hover:bg-[#DB4444] hover:text-white mini:pt-0 mini:pb-[2px] mini:w-[20%] cursor-pointer'>
+                                     <WatchIcon className='mobile:!text-sm'/>
+                                     <p className='font-normal leading-5 text-base font-secondary mt-3 mobile:text-xs mini:text-[8px]'>Smart Watch</p>
+                                  </div>
+
+                                  <div className='browse_camera py-7 px-10 rounded border-2 text-center tablet:px-5 tablet:py-5 mobile:px-4 mobile:py-4 mini:px-2 mini:py-2 hover:bg-[#DB4444] hover:text-white mini:w-[20%] cursor-pointer'>
+                                      <CameraAltIcon className='mobile:!text-sm'/>
+                                      <p className='font-normal leading-5 text-base font-secondary mt-3 mobile:text-xs mini:text-[8px]'>Camera</p>
+                                  </div>
+
+                                  <div className='browse_gaming py-7 px-10 rounded border-2 text-center tablet:px-5 tablet:py-5 mobile:px-4 mobile:py-4 mini:px-2 mini:py-2 hover:bg-[#DB4444] hover:text-white mini:w-[20%] cursor-pointer'>
+                                      <SportsEsportsIcon className='mobile:!text-sm'/>
+                                      <p className='font-normal leading-5 text-base font-secondary mt-3 mobile:text-xs mini:text-[8px]'>Gaming</p>
+                                  </div>
+                             </div>
+                        </div>
+                </section>
+
+                {/* music experience */}
+
+                <section className='music experience'>
+                       <div className='mx-auto max-w-bodyWidth mb-16 tablet:px-4 mobile:px-4'>
+                           <div className='bg-black'>
+                               <div className='jbl_speaker_container flex justify-center items-center'>
+                                  <div className='enhance_music w-[50%] pt-28 pl-14'>
+                                    <p className='text-white font-primary text-[48px] leading-[60px] tablet:text-4xl tablet: mobile:text-2xl leading-7leading-10'>Enhance Your Music Experience</p>
+
+                                    <div className='days_limit_offer flex gap-4 mt-10'>
+                               <div className='music_days bg-white rounded-[50%] px-3 py-2'>
+                                   <p className='text-secondary font-secondary text-xs leading-5 font-medium '>Days</p>
+                                   <p className='text-secondary font-primary text-3xl font-bold leading-8  mobile:text-sm mobile:leading-4'>03</p>
+                               </div>
+                               <div className='music_hours bg-white px-3 py-2 rounded-[50%]'>
+                                 <p className='text-secondary font-secondary text-xs leading-5 font-medium'>Hours</p>
+                                 <p className='text-secondary font-primary text-3xl font-bold leading-8  mobile:text-sm mobile:leading-4'>04</p>
+                               </div>
+                               <div className='music_minutes bg-white px-3 py-2 rounded-[50%]'>
+                                  <p className='text-secondary font-secondary text-xs leading-5 font-medium'>Minutes</p>
+                                  <p className='text-secondary font-primary text-3xl font-bold leading-8  mobile:text-sm mobile:leading-4'>30</p>
+                               </div>
+                               <div className='music_seconds bg-white px-3 py-2 rounded-[50%]'>
+                                   <p className='text-secondary font-secondary text-xs leading-5 font-medium'>Seconds</p>
+                                   <p className='text-secondary font-primary text-3xl font-bold leading-8 mobile:text-sm mobile:leading-4'>03</p>
+                               </div>
+                           </div>
+
+                           <div className='shop_now w-[30%] mt-10 mb-14'>
+                            <button className='bg-[#0F6] w-[100%] text-primary py-2 font-secondary leading-6 font-medium text-base rounded mobile:text-[10px] mobile:leading-4 mini:text-[8px] mini:font-bold'>Add To Cart</button>
+                           </div>
+                                </div>
+
+                                <div className='jbl_image w-[50%]'>
+                                   <img src='/src/assets/images/jbl.webp'/>
+                                </div>
+
+                               </div>
+                           </div>
+                       </div>
+                </section>
       </section>
   )
 }
