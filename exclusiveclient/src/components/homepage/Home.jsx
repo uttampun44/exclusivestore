@@ -9,7 +9,7 @@ import ComputerIcon from '@mui/icons-material/Computer';
 import WatchIcon from '@mui/icons-material/Watch';
 import CameraAltIcon from '@mui/icons-material/CameraAlt';
 import SportsEsportsIcon from '@mui/icons-material/SportsEsports';
-
+import Ourproducts from './Ourproducts';
 
 function Home() {
 
@@ -165,30 +165,30 @@ function Home() {
                 <section className='music experience'>
                        <div className='mx-auto max-w-bodyWidth mb-16 tablet:px-4 mobile:px-4'>
                            <div className='bg-black'>
-                               <div className='jbl_speaker_container flex justify-center items-center'>
-                                  <div className='enhance_music w-[50%] pt-28 pl-14'>
-                                    <p className='text-white font-primary text-[48px] leading-[60px] tablet:text-4xl tablet: mobile:text-2xl leading-7leading-10'>Enhance Your Music Experience</p>
+                               <div className='jbl_speaker_container flex justify-center items-center mobile:flex-wrap'>
+                                  <div className='enhance_music w-[50%] pt-28 pl-14 mobile:w-[unset] mobile:pl-[unset]'>
+                                    <p className='text-white font-primary text-[48px] leading-[60px] tablet:text-4xl tablet: mobile:text-xl mobile:leading-6 tablet:leading-10'>Enhance Your Music Experience</p>
 
                                     <div className='days_limit_offer flex gap-4 mt-10'>
-                               <div className='music_days bg-white rounded-[50%] px-3 py-2'>
+                               <div className='music_days bg-white px-3 py-2 rounded-[50%] mobile:rounded-[unset] tablet:w-[20%] w-[13%] text-center mobile:w-[unset]'>
                                    <p className='text-secondary font-secondary text-xs leading-5 font-medium '>Days</p>
-                                   <p className='text-secondary font-primary text-3xl font-bold leading-8  mobile:text-sm mobile:leading-4'>03</p>
+                                   <p className='text-secondary font-primary text-3xl font-bold leading-8  mobile:text-xs mobile:leading-4'>03</p>
                                </div>
-                               <div className='music_hours bg-white px-3 py-2 rounded-[50%]'>
+                               <div className='music_hours bg-white px-3 py-2 rounded-[50%] mobile:rounded-[unset] tablet:w-[20%] w-[13%] text-center mobile:w-[unset]'>
                                  <p className='text-secondary font-secondary text-xs leading-5 font-medium'>Hours</p>
-                                 <p className='text-secondary font-primary text-3xl font-bold leading-8  mobile:text-sm mobile:leading-4'>04</p>
+                                 <p className='text-secondary font-primary text-3xl font-bold leading-8  mobile:text-xs mobile:leading-4'>04</p>
                                </div>
-                               <div className='music_minutes bg-white px-3 py-2 rounded-[50%]'>
+                               <div className='music_minutes bg-white px-3 py-2 rounded-[50%] mobile:rounded-[unset] tablet:w-[20%] w-[13%] text-center mobile:w-[unset]'>
                                   <p className='text-secondary font-secondary text-xs leading-5 font-medium'>Minutes</p>
-                                  <p className='text-secondary font-primary text-3xl font-bold leading-8  mobile:text-sm mobile:leading-4'>30</p>
+                                  <p className='text-secondary font-primary text-3xl font-bold leading-8  mobile:text-xs mobile:leading-4'>30</p>
                                </div>
-                               <div className='music_seconds bg-white px-3 py-2 rounded-[50%]'>
+                               <div className='music_seconds bg-white px-2 py-2 rounded-[50%] mobile:rounded-[unset] tablet:w-[20%] w-[13%] text-center mobile:w-[unset]'>
                                    <p className='text-secondary font-secondary text-xs leading-5 font-medium'>Seconds</p>
-                                   <p className='text-secondary font-primary text-3xl font-bold leading-8 mobile:text-sm mobile:leading-4'>03</p>
+                                   <p className='text-secondary font-primary text-3xl font-bold leading-8 mobile:text-xs mobile:leading-4'>03</p>
                                </div>
                            </div>
 
-                           <div className='shop_now w-[30%] mt-10 mb-14'>
+                           <div className='shop_now w-[30%] mt-10 mb-14 mobile:w-[30%] mx-auto'>
                             <button className='bg-[#0F6] w-[100%] text-primary py-2 font-secondary leading-6 font-medium text-base rounded mobile:text-[10px] mobile:leading-4 mini:text-[8px] mini:font-bold'>Add To Cart</button>
                            </div>
                                 </div>
@@ -200,6 +200,35 @@ function Home() {
                                </div>
                            </div>
                        </div>
+                </section>
+
+                {/* explore our products */}
+
+                <section className='explore_our_products mt-8'>
+                      <div className='explore_products_container max-w-bodyWidth mx-auto'>
+                             <div className='explore_ctegory flex items-center gap-4'>
+                                 <div className='bg-[#DB4444] w-[2%] h-[70px] rounded'>
+
+                                 </div>
+                                 <div className='explore_categories_box'>
+                                      <p className='text-secondary text-base leading-5 font-semibold text-[#DB4444]'>Category</p>
+                                 </div>
+                             </div>
+
+                             <div className='explore_title mt-10'>
+                                    <h4 className='text-secondary font-primary text-2xl font-semibold leading-10 mobile:text-base'>Explore Our Products</h4>
+                             </div>
+
+                             <div className='explore_our_products products_display grid grid-cols-4 gap-x-3 gap-y-6 items-end mb-14 mobile:row-y-4'>
+                                  {
+                                    products.slice(4, 16).map((ourproducts) =>{
+                                       return(
+                                        <Ourproducts key={ourproducts.id} {...ourproducts}/>
+                                       )
+                                    })
+                                  }
+                             </div>
+                      </div>
                 </section>
       </section>
   )
