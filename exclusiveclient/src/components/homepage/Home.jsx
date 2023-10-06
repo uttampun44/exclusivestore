@@ -50,7 +50,7 @@ function Home() {
                   </aside>
                </div>
 
-               <div className='hero_carousel py-10 w-[80%] pl-10 tablet:pr-8 mobile:pr-4 mobile:w-[100%] mobile:pl-4'>
+               <div className='hero_carousel py-10 w-[90%] pl-10 tablet:pr-8 mobile:pr-4 mobile:w-[100%] mobile:pl-4'>
                    <div className='hero_carousel_box'>
                       <Carousel  data={carousel} width= '100%' dots={true} objectFit ='fill' />
                    </div>
@@ -239,9 +239,9 @@ function Home() {
                             <div className='customer_row'>
                                     <div className='services_container max-w-[973px] mx-auto'>
                                         <div className='service_gallery flex justify-between items-center mobile:gap-4 mobile:px-4 tablet:px-4'>
-                                             <img src='/src/assets/images/Services.png' className='w-auto h-auto mobile:!w-[150px] mobile:!h-[auto] mobile:!object-cover'/>
-                                             <img src='/src/assets/images/customerservice.png' className='w-auto h-auto'/>
-                                             <img src='/src/assets/images/moneyback.png' className='w-auto h-auto'/>
+                                             <img src='/src/assets/images/Services.png' className='w-auto h-auto mobile:!w-[150px] mobile:!h-[auto] mobile:!object-cover' alt='services'/>
+                                             <img src='/src/assets/images/customerservice.png' className='w-auto h-auto mobile:!w-[150px] mobile:!h-[auto] mobile:!object-cover' alt='customerservice'/>
+                                             <img src='/src/assets/images/moneyback.png' className='w-auto h-auto mobile:!w-[150px] mobile:!h-[auto] mobile:!object-cover' alt='moneyback'/>
                                         </div>
                                     </div>
                             </div>
