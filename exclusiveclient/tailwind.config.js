@@ -16,7 +16,7 @@ export default {
       screens:{
         'tablet': {"min": '768px',  'max': '992px'},
         'mobile' :{'max' : '767px'},
-        'laptop' :  {'min' : '1024px'},
+        'laptop' :  {'min' : '1024px', 'max': '1169px'},
          'mini' : {'min' : '320px', 'max': '413px'}
       },
       fontFamily: {

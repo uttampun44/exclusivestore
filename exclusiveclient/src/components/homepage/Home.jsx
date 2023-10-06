@@ -118,7 +118,7 @@ function Home() {
             {/* browse by category */}
 
                 <section className='browse_by_category'>
-                        <div className='browse_by_category_container max-w-bodyWidth mt-20 mx-auto mobile:px-4 tablet:px-4'>
+                        <div className='browse_by_category_container max-w-bodyWidth mt-20 mx-auto mobile:px-4 tablet:px-4 laptop:px-4'>
                              <div className='browse_ctegory flex items-center gap-4'>
                                  <div className='bg-[#DB4444] w-[2%] h-[70px] rounded'>
 
@@ -163,7 +163,7 @@ function Home() {
                 {/* music experience */}
 
                 <section className='music experience'>
-                       <div className='mx-auto max-w-bodyWidth mb-16 tablet:px-4 mobile:px-4'>
+                       <div className='mx-auto max-w-bodyWidth mb-16 tablet:px-4 mobile:px-4 laptop:px-4'>
                            <div className='bg-black'>
                                <div className='jbl_speaker_container flex justify-center items-center mobile:flex-wrap'>
                                   <div className='enhance_music w-[50%] pt-28 pl-14 mobile:w-[unset] mobile:pl-[unset]'>
@@ -188,13 +188,13 @@ function Home() {
                                </div>
                            </div>
 
-                           <div className='shop_now w-[30%] mt-10 mb-14 mobile:w-[30%] mx-auto'>
-                            <button className='bg-[#0F6] w-[100%] text-primary py-2 font-secondary leading-6 font-medium text-base rounded mobile:text-[10px] mobile:leading-4 mini:text-[8px] mini:font-bold'>Add To Cart</button>
+                           <div className='shop_now w-[30%] mt-10 mb-14 mobile:w-[30%]'>
+                            <button className='bg-[#0F6] w-[100%] text-black py-2 font-secondary leading-6 font-medium text-base rounded mobile:text-[10px] mobile:leading-4 mini:text-[8px] mini:font-bold'>Add To Cart</button>
                            </div>
                                 </div>
 
                                 <div className='jbl_image w-[50%]'>
-                                   <img src='/src/assets/images/jbl.webp'/>
+                                   <img src='/src/assets/images/jbl.webp' className='tablet:w-[300px] tablet:h-[auto] tablet:object-contain'/>
                                 </div>
 
                                </div>
@@ -205,7 +205,7 @@ function Home() {
                 {/* explore our products */}
 
                 <section className='explore_our_products mt-8'>
-                      <div className='explore_products_container max-w-bodyWidth mx-auto'>
+                      <div className='explore_products_container max-w-bodyWidth mx-auto laptop:px-4 tablet:px-4 mobile:px-4'>
                              <div className='explore_ctegory flex items-center gap-4'>
                                  <div className='bg-[#DB4444] w-[2%] h-[70px] rounded'>
 
@@ -228,6 +228,23 @@ function Home() {
                                     })
                                   }
                              </div>
+                             <div className='view_products flex justify-center my-16'>
+                                  <Link to='/products' className='bg-[#DB4444] py-4 text-base font-secondary leading-6 px-12 font-medium text-white mobile:px-4 mobile:text-xs'>View All Products</Link>
+                       </div>
+                      </div>
+                </section>
+
+                <section className='customer_service'>
+                      <div className='customer_service_container max-w-bodyWidth my-16 mx-auto mobile:my-9'>
+                            <div className='customer_row'>
+                                    <div className='services_container max-w-[973px] mx-auto'>
+                                        <div className='service_gallery flex justify-between items-center mobile:gap-4 mobile:px-4 tablet:px-4'>
+                                             <img src='/src/assets/images/Services.png' className='w-auto h-auto mobile:!w-[150px] mobile:!h-[auto] mobile:!object-cover'/>
+                                             <img src='/src/assets/images/customerservice.png' className='w-auto h-auto'/>
+                                             <img src='/src/assets/images/moneyback.png' className='w-auto h-auto'/>
+                                        </div>
+                                    </div>
+                            </div>
                       </div>
                 </section>
       </section>
