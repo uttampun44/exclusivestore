@@ -32,7 +32,7 @@ function Header() {
                   <nav>
                       <div className='navmenu-row max-w-bodyWidth mx-auto pt-10 pb-5  laptop:px-8 flex justify-between tablet:px-8 items-center mobile:px-2'>
                              <div className='headTitle'>
-                                  <p className='font-secondary leading-8 text-2xl font-bold mobile:text-sm'>Exclusive</p>
+                                  <Link to='/' className='font-secondary leading-8 text-2xl font-bold mobile:text-sm pl-8 tablet:pl-0 mobile:pl-0'>Exclusive</Link>
                              </div>
 
                              <div className='nav-menu flex gap-4 mobile:gap-2'>
