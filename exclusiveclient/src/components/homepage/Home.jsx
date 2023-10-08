@@ -34,7 +34,7 @@ function Home() {
     <section className='hero_section'>
      <div className='hero_container max-w-bodyWidth mx-auto'>
           <div className='hero_row flex items-start'>
-               <div className='sidebar_menu border-r-2 px-7 py-10 mobile:px-4 mobile:hidden'>
+               <div className='sidebar_menu border-r-2 pr-7  py-10 mobile:px-4 mobile:hidden'>
                   <aside>
                       <ul className='grid gap-y-4 mobile:gap-y-1'>
                          <li><Link to='/' className='font-secondary text-base font-normal leading-6 tablet:text-sm'>Woman's Fashion</Link></li>
@@ -59,7 +59,7 @@ function Home() {
     </div>
 
     <section className='today_deal'>
-                 <div className='deal_container max-w-bodyWidth mx-auto mt-[6em] pl-8 mobile:pl-4 mobile:mt-0 border-b-2'>
+                 <div className='deal_container max-w-bodyWidth mx-auto mt-[6em] mobile:pl-4 mobile:mt-0 border-b-2'>
                        <div className='deal_title flex items-center gap-4'>
                            <div className='deal_box bg-[#DB4444] w-[2%] h-[70px] rounded'>
 
