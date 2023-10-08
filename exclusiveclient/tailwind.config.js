@@ -17,7 +17,9 @@ export default {
         'tablet': {"min": '768px',  'max': '992px'},
         'mobile' :{'max' : '767px'},
         'laptop' :  {'min' : '1024px', 'max': '1169px'},
-         'mini' : {'min' : '320px', 'max': '413px'}
+         'mini' : {'min' : '320px', 'max': '480px'},
+         'desktoplarge' : {'min': '1440px'},
+         'desktop' : {'min': '1200px', 'max': '1439px'}
       },
       fontFamily: {
         'primary': ['Inter', 'sans-serif'],
