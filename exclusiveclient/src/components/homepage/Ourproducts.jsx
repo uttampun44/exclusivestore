@@ -1,6 +1,17 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { useNavigate } from 'react-router-dom'
+import ContextApi from '../../contextapi/Context';
 
 function Ourproducts({image, productName, price}) {
+
+    const history = useNavigate();
+    const {addToCart} = useContext(ContextApi)
+
+  const cart = () => {
+      addToCart(productName)
+     console.log(productName)
+  }
+
   return (
     <div>
       <div className='products grid mobile:gap-y-4 mobile:w-[100%] pr-4 gap-y-4 my-5 text-center' >
@@ -12,7 +23,7 @@ function Ourproducts({image, productName, price}) {
       </div>
 
      <div className='add_to_cart'>
-         <button className='bg-black w-[100%] text-primary py-2 font-secondary leading-6 font-medium text-base rounded mobile:text-[10px] mobile:leading-4 mini:text-[8px] mini:font-bold'>Add To Cart</button>
+         <button className='bg-black w-[100%] text-primary py-2 font-secondary leading-6 font-medium text-base rounded mobile:text-[10px] mobile:leading-4 mini:text-[8px] mini:font-bold' onClick={cart} >Add To Cart</button>
      </div>
 
         </div>
