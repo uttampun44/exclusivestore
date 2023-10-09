@@ -6,6 +6,12 @@ import ContextApi from './Context';
 const AppProvider = ({children}) => {
 
    const [products, setProducts] = useState([]);
+  const [carts, setCarts] = useState([]);
+
+  const addToCart = () =>{
+       setCarts([carts, ...products])
+  }
+
 
    const fethProduct = async () =>{
     try {
@@ -32,7 +38,7 @@ useEffect(() =>{
 }, [])
 
    return(
-         <ContextApi.Provider value={{products, setProducts}}>
+         <ContextApi.Provider value={{products, setProducts, carts, addToCart}}>
              {children}
          </ContextApi.Provider>
    )

@@ -1,7 +1,15 @@
-import React from 'react'
-
+import React, { useContext } from 'react'
+import ContextApi from '../../contextapi/Context'
 
 function Productgallery({image, productName, price}) {
+
+   const {addToCart} = useContext(ContextApi)
+
+
+  const carts = () =>{
+      console.log(productName)
+      addToCart(productName)
+   }
   return (
    <div>
 
@@ -15,7 +23,7 @@ function Productgallery({image, productName, price}) {
            </div>
 
        <div className='add_to_cart'>
-          <button className='bg-black w-[100%] text-primary py-2 font-secondary leading-6 font-medium text-base rounded mobile:text-[10px] mobile:leading-4 mini:text-[8px] mini:font-bold'>Add To Cart</button>
+          <button className='bg-black w-[100%] text-primary py-2 font-secondary leading-6 font-medium text-base rounded mobile:text-[10px] mobile:leading-4 mini:text-[8px] mini:font-bold' onClick={carts}>Add To Cart</button>
       </div>
 
              </div>
