@@ -1,11 +1,13 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import SearchIcon from '@mui/icons-material/Search';
-
+import ContextApi from '../../contextapi/Context';
 
 function Header() {
+
+    const {state} = useContext(ContextApi)
   return (
     <div>
             <header>
@@ -49,7 +51,9 @@ function Header() {
 
                                   <div className='whistlist-cart flex gap-4 items-center mobile:gap-1'>
                                      <FavoriteIcon className='mobile:!w-3' />
-                                     <ShoppingCartIcon className='mobile:!w-3'/>
+                                    <div className='shopping_cart relative'>
+                                     <ShoppingCartIcon className='mobile:!w-3'/><span className='rounded-md px-1 text-black font-secondary text-base leading-6 font-medium relative right-[20%]'>{state.cart.length}</span>
+                                    </div>
                                   </div>
                              </div>
                       </div>

@@ -79,19 +79,19 @@ function Home() {
                            <div className='days_limit_offer flex gap-4'>
                                <div className='offer_days'>
                                    <p className='text-secondary font-secondary text-xs leading-5 font-medium '>Days</p>
-                                   <p className='text-secondary font-primary text-3xl font-bold leading-8  mobile:text-sm mobile:leading-4'>03 <span>:</span></p>
+                                   <p className='text-secondary font-primary text-2xl font-bold leading-8  mobile:text-sm mobile:leading-4'>03 <span>:</span></p>
                                </div>
                                <div className='offer_hours'>
                                  <p className='text-secondary font-secondary text-xs leading-5 font-medium'>Hours</p>
-                                 <p className='text-secondary font-primary text-3xl font-bold leading-8  mobile:text-sm mobile:leading-4'>04  <span>:</span></p>
+                                 <p className='text-secondary font-primary text-2xl font-bold leading-8  mobile:text-sm mobile:leading-4'>04  <span>:</span></p>
                                </div>
                                <div className='offer_minutes'>
                                   <p className='text-secondary font-secondary text-xs leading-5 font-medium'>Minutes</p>
-                                  <p className='text-secondary font-primary text-3xl font-bold leading-8  mobile:text-sm mobile:leading-4'>30 <span>:</span></p>
+                                  <p className='text-secondary font-primary text-2xl font-bold leading-8  mobile:text-sm mobile:leading-4'>30 <span>:</span></p>
                                </div>
                                <div className='offer_seconds'>
                                    <p className='text-secondary font-secondary text-xs leading-5 font-medium'>Seconds</p>
-                                   <p className='text-secondary font-primary text-3xl font-bold leading-8 mobile:text-sm mobile:leading-4'>03</p>
+                                   <p className='text-secondary font-primary text-2xl font-bold leading-8 mobile:text-sm mobile:leading-4'>03</p>
                                </div>
                            </div>
                            </div>
@@ -172,19 +172,19 @@ function Home() {
                                     <div className='days_limit_offer flex gap-4 mt-10'>
                                <div className='music_days bg-white px-3 py-2 rounded-[50%] mobile:rounded-[unset] tablet:w-[20%] w-[13%] text-center mobile:w-[unset]'>
                                    <p className='text-secondary font-secondary text-xs leading-5 font-medium '>Days</p>
-                                   <p className='text-secondary font-primary text-3xl font-bold leading-8  mobile:text-xs mobile:leading-4'>03</p>
+                                   <p className='text-secondary font-primary text-2xl font-bold leading-8  mobile:text-xs mobile:leading-4'>03</p>
                                </div>
                                <div className='music_hours bg-white px-3 py-2 rounded-[50%] mobile:rounded-[unset] tablet:w-[20%] w-[13%] text-center mobile:w-[unset]'>
                                  <p className='text-secondary font-secondary text-xs leading-5 font-medium'>Hours</p>
-                                 <p className='text-secondary font-primary text-3xl font-bold leading-8  mobile:text-xs mobile:leading-4'>04</p>
+                                 <p className='text-secondary font-primary text-2xl font-bold leading-8  mobile:text-xs mobile:leading-4'>04</p>
                                </div>
                                <div className='music_minutes bg-white px-3 py-2 rounded-[50%] mobile:rounded-[unset] tablet:w-[20%] w-[13%] text-center mobile:w-[unset]'>
                                   <p className='text-secondary font-secondary text-xs leading-5 font-medium'>Minutes</p>
-                                  <p className='text-secondary font-primary text-3xl font-bold leading-8  mobile:text-xs mobile:leading-4'>30</p>
+                                  <p className='text-secondary font-primary text-2xl font-bold leading-8  mobile:text-xs mobile:leading-4'>30</p>
                                </div>
                                <div className='music_seconds bg-white px-2 py-2 rounded-[50%] mobile:rounded-[unset] tablet:w-[20%] w-[13%] text-center mobile:w-[unset]'>
                                    <p className='text-secondary font-secondary text-xs leading-5 font-medium'>Seconds</p>
-                                   <p className='text-secondary font-primary text-3xl font-bold leading-8 mobile:text-xs mobile:leading-4'>03</p>
+                                   <p className='text-secondary font-primary text-2xl font-bold leading-8 mobile:text-xs mobile:leading-4'>03</p>
                                </div>
                            </div>
 

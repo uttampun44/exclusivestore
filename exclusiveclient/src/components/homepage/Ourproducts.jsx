@@ -5,11 +5,16 @@ import ContextApi from '../../contextapi/Context';
 function Ourproducts({image, productName, price}) {
 
     const history = useNavigate();
-    const {addToCart} = useContext(ContextApi)
+
+    const {dispatch} = useContext(ContextApi)
 
   const cart = () => {
-      addToCart(productName)
-     console.log(productName)
+
+   const product = { productName, image, price };
+
+   dispatch({type:'ADD_TO_CART', payload:product})
+
+     history('/cart')
   }
 
   return (
