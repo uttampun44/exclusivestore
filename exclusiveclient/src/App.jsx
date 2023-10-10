@@ -3,6 +3,7 @@ import About from './components/about/About'
 import Signup from './components/signup/Signup'
 import Login from './components/login/Login'
 import Products from './components/products/Products'
+import Cart from './components/cart/Cart'
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
 import './App.css'
 
@@ -18,6 +19,7 @@ function App() {
                 <Route exact path='/signup' Component={Signup}></Route>
                 <Route exact path='/login' Component={Login}></Route>
                 <Route exact path='/products' Component={Products}></Route>
+                <Route exact path='/cart' Component={Cart}></Route>
                 <Route exact path='*'></Route>
            </Routes>
           </div>

@@ -1,14 +1,19 @@
 import React, { useContext } from 'react'
 import ContextApi from '../../contextapi/Context'
+import { useNavigate } from 'react-router-dom'
 
 function Productgallery({image, productName, price}) {
 
-   const {addToCart} = useContext(ContextApi)
+   const {dispatch} = useContext(ContextApi)
+
+   const history = useNavigate();
 
 
   const carts = () =>{
-      console.log(productName)
-      addToCart(productName)
+      const product = { productName, image, price };
+
+      dispatch({type:'ADD_TO_CART', payload:product})
+      history('/cart')
    }
   return (
    <div>

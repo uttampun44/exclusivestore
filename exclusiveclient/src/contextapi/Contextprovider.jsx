@@ -1,17 +1,20 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useReducer } from 'react';
 import ContextApi from './Context';
-
+import { Cartreducer } from './Cartreducer';
 
 
 const AppProvider = ({children}) => {
 
+   const initialState = {
+      cart: [],
+      price: 0,
+      quantity: 0,
+      subtotal: 0,
+    };
+
    const [products, setProducts] = useState([]);
-  const [carts, setCarts] = useState([]);
 
-  const addToCart = () =>{
-       setCarts([carts, ...products])
-  }
-
+  const [state, dispatch] = useReducer(Cartreducer, initialState);
 
    const fethProduct = async () =>{
     try {
@@ -31,14 +34,15 @@ const AppProvider = ({children}) => {
 
     } catch (error) {
        throw new Error
+      }
     }
-}
+
 useEffect(() =>{
   fethProduct()
 }, [])
 
    return(
-         <ContextApi.Provider value={{products, setProducts, carts, addToCart}}>
+         <ContextApi.Provider value={{products, setProducts, state, dispatch}}>
              {children}
          </ContextApi.Provider>
    )
