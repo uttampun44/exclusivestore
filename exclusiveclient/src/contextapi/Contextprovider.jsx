@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useReducer } from 'react';
 import ContextApi from './Context';
 import { Cartreducer } from './Cartreducer';
+import { useGoogleLogin } from '@react-oauth/google';
 
 
 const AppProvider = ({children}) => {
@@ -13,6 +14,39 @@ const AppProvider = ({children}) => {
     };
 
    const [products, setProducts] = useState([]);
+
+   // google auth
+   const [profile, setProfile] = useState([]);
+   const [user, setUser] = useState([]);
+
+   const login = useGoogleLogin({
+     onSuccess: (codeResponse) => {
+       setUser(codeResponse);
+       profileShow(codeResponse.access_token);
+     },
+     onError: (error) => console.log('Login Failed:', error),
+   });
+
+   const profileShow = async (access_token) => {
+     try {
+       if (access_token) {
+         const userProfile = await fetch(`https://www.googleapis.com/oauth2/v1/userinfo?access_token=${access_token}`, {
+           headers: {
+             Authorization: `Bearer ${access_token}`,
+             Accept: 'application/json',
+           },
+         });
+
+         const userData = await userProfile.json();
+
+         if (userProfile.status === 200) {
+           setProfile(userData);
+         }
+       }
+     } catch (error) {
+       console.error('Error:', error);
+     }
+   };
 
   const [state, dispatch] = useReducer(Cartreducer, initialState);
 
@@ -41,8 +75,14 @@ useEffect(() =>{
   fethProduct()
 }, [])
 
+// google authentication
+useEffect(() =>{
+   profileShow()
+}, [user])
+
+
    return(
-         <ContextApi.Provider value={{products, setProducts, state, dispatch}}>
+         <ContextApi.Provider value={{products, setProducts, state, dispatch, profile, setProfile, user, setUser, login}}>
              {children}
          </ContextApi.Provider>
    )

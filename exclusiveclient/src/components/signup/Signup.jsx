@@ -1,10 +1,20 @@
-import React from 'react'
+import React, { useContext, useEffect } from 'react'
 import Header from '../header/Header'
 import Footer from '../footer/Footer'
 import { Link } from 'react-router-dom'
+import ContextApi from '../../contextapi/Context';
 
 
 function Signup() {
+
+     const {login} = useContext(ContextApi);
+
+
+      const googleLogin = (event) =>{
+          login();
+          event.preventDefault()
+      }
+
   return (
   <>
      <Header />
@@ -34,8 +44,9 @@ function Signup() {
                                               <button className='text-white font-secondary text-base font-medium leading-6'>Creat Account</button>
                                          </div>
 
-                                         <div className='signup_google mt-3 border-2 py-4 px-15 text-center flex items-center justify-center gap-2'>
-                                            <img src='/src/assets/images/Icon-Google.png' alt='googlepng'/> <button className='font-secondary text-base font-medium leading-6'>Sign up with Google </button>
+                                         <div className='signup_google mt-3 py-4 px-15 text-center flex items-center justify-center gap-2'>
+                                             <img src='/src/assets/images/Icon-Google.png' alt='googlepng'/> <button className='font-secondary text-base font-medium leading-6' onClick={googleLogin}>Sign up with Google </button>
+
                                          </div>
 
                                          <div className='signup_already_account flex justify-center mt-8 gap-4 items-center h-8 tablet:h-14'>

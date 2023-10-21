@@ -7,26 +7,27 @@ import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import { Link } from 'react-router-dom';
 import DeleteIcon from '@mui/icons-material/Delete';
 
+
 function Cart() {
 
-
-
     const {state, dispatch} = useContext(ContextApi)
-   const [subtotal, setSubtotal] = useState(false);
+   const [quantity, setQuantity] = useState(false);
 
-    const deleteItem = (product) =>{
-      dispatch({type: 'REMOVE_FROM_CART', payload:product})
+    const deleteItem = (item) =>{
+      dispatch({type: 'REMOVE_FROM_CART', payload: item})
     }
 
-    const incrementQuantity = (product) =>{
-      dispatch({type: 'INCREMENT_QUANTITY', payload: product})
-      console.log(product)
-      setSubtotal(!subtotal)
+
+    const incrementQuantity = (productId) =>{
+      dispatch({type: 'INCREMENT_QUANTITY', payload: { id: productId }})
+      setQuantity(!quantity);
     }
 
-    const decrement = () =>{
-      console.log("decrement");
+    const decrement = (id) =>{
+      dispatch({type: 'DECREMENT_QUANTITY', payload: id})
+      setQuantity(!quantity);
     }
+
   return (
    <>
        <Header />
@@ -82,17 +83,17 @@ function Cart() {
                                                                  <p className='font-secondary text-base leading-6 font-medium'>{singleproduct.quantity}</p>
                                                              </div>
                                                              <div className='quanity_increase_decrease grid'>
-                                                                   <ExpandLessIcon onClick={() => incrementQuantity(singleproduct)}/>
-                                                                   <KeyboardArrowDownIcon onClick = {decrement}/>
+                                                                   <ExpandLessIcon onClick={() => incrementQuantity(singleproduct.id)}/>
+                                                                   <KeyboardArrowDownIcon onClick = {() => decrement(singleproduct)}/>
                                                              </div>
                                                           </div>
 
                                                           <div className='single_product_sub_total'>
-                                                           <p className='font-secondary text-base leading-6 font-medium'>$ {subtotal ? `${singleproduct.subtotal}` : `${singleproduct.price}`}</p>
+                                                           <p className='font-secondary text-base leading-6 font-medium'>$  {singleproduct.quantity > 1 ? singleproduct.subtotal.toFixed(2) : singleproduct.price.toFixed(2)}</p>
                                                           </div>
 
                                                           <div className='remove_item_cart'>
-                                                             <DeleteIcon color='#DB4444' style={{cursor: 'pointer'}} onClick={() => deleteItem(singleproduct)}/>
+                                                             <DeleteIcon color='#DB4444' style={{cursor: 'pointer'}} onClick={() => deleteItem(singleproduct.id)}/>
                                                           </div>
                                                          </div>
                                                     </div>
@@ -111,7 +112,7 @@ function Cart() {
                                                 <div className='cart_total_row'>
                                                     <div className='subtotal flex items-center justify-between border-b-2 my-4 py-4'>
                                                        <p>Subtotal</p>
-                                                       <p>{state.price.toFixed(2)}</p>
+                                                       <p>{quantity > 1 ? state.subtotal.toFixed(2) : state.price.toFixed(2)}</p>
                                                     </div>
                                                     <div className='flex justify-between border-b-2 items-center my-4 py-4'>
                                                       <p>Shipping </p>
@@ -119,7 +120,7 @@ function Cart() {
                                                     </div>
                                                     <div className='total flex justify-between items-center border-b-2 my-4 py-4'>
                                                      <p>Total</p>
-                                                     <p>{state.price.toFixed(2)}</p>
+                                                     <p>{quantity > 1 ? state.subtotal.toFixed(2) : state.price.toFixed(2)}</p>
                                                     </div>
                                                 </div>
 
