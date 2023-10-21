@@ -6,6 +6,7 @@ export const Cartreducer = (state, action) => {
       case 'ADD_TO_CART':
         const newItem = { ...action.payload, quantity: 1 };
         const cartPrice =  [...state.cart, newItem];
+
         return {...state,
          cart: cartPrice,
          price: cartPrice.reduce((total, item) => total + item.price, 0),
@@ -14,13 +15,10 @@ export const Cartreducer = (state, action) => {
 
         // remove from cart functionality
       case 'REMOVE_FROM_CART':
-        const cartpriceRemove =  state.cart.filter((item) => item.id !== action.payload.id)
-
         return {
           ...state,
-          cart: cartpriceRemove,
-          price: cartpriceRemove.reduce((total, item) => total + item.price, 0)
-        }
+          cart: state.cart.filter((item) => item.id !== action.payload),
+        };
 
         // increment quantity
         case 'INCREMENT_QUANTITY':
@@ -28,12 +26,12 @@ export const Cartreducer = (state, action) => {
         const increment = state.cart.map((item) => {
 
           if(item.id === action.payload.id){
-            return{
+            return {
               ...item,
               quantity : item.quantity + 1,
-              subtotal: (state.quantity + 1) * item.price
+              subtotal: (item.quantity + 1) * item.price
 
-            }
+            };
           }
           return item
         })
@@ -41,14 +39,34 @@ export const Cartreducer = (state, action) => {
         return {
           ...state,
           cart: increment,
-          price: increment.reduce((total, item) => total + item.price, 0),
-          quantity: state.quantity + 1,
+          price: increment.reduce((total, item) => total + item.price * item.quantity, 0),
+          quantity: increment.reduce((total, item) => total + item.quantity, 0),
           subtotal: increment.reduce((total, item) => total + item.subtotal, 0)
         }
 
 
         case 'DECREMENT_QUANTITY':
 
+        const decrement = state.cart.map((item) => {
+
+          if(item.id === action.payload.id && item.quantity > 1){
+            const updateDecrement = {
+              ...item,
+              quantity : item.quantity - 1,
+              subtotal: (item.quantity - 1) * item.price
+
+            };
+            return updateDecrement;
+          }
+          return item
+        })
+
+        return {
+          ...state,
+          cart: decrement,
+          price: decrement.reduce((total, item) => total + item.subtotal, 0),
+          quantity: state.quantity - 1,
+        }
       default:
         return state;
     }

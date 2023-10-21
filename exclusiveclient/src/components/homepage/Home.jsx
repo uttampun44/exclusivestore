@@ -31,7 +31,8 @@ function Home() {
    ]
 
   return (
-    <section className='hero_section'>
+    <main>
+           <section className='hero_section'>
      <div className='hero_container max-w-bodyWidth mx-auto'>
           <div className='hero_row flex items-start'>
                <div className='sidebar_menu border-r-2 pr-7  py-10 mobile:px-4 mobile:hidden'>
@@ -248,6 +249,7 @@ function Home() {
                       </div>
                 </section>
       </section>
+    </main>
   )
 }
 
