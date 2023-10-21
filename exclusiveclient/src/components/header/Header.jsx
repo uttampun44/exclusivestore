@@ -4,10 +4,20 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import SearchIcon from '@mui/icons-material/Search';
 import ContextApi from '../../contextapi/Context';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import LogoutIcon from '@mui/icons-material/Logout';
+import { googleLogout } from '@react-oauth/google';
 
 function Header() {
 
     const {state} = useContext(ContextApi)
+    const {profile, setProfile, user} = useContext(ContextApi);
+
+
+      const logout = () =>{
+        googleLogout()
+        setProfile(null)
+      }
   return (
     <div>
             <header>
@@ -52,7 +62,31 @@ function Header() {
                                   <div className='whistlist-cart flex gap-4 items-center mobile:gap-1'>
                                      <FavoriteIcon className='mobile:!w-3' />
                                     <div className='shopping_cart relative'>
-                                     <ShoppingCartIcon className='mobile:!w-3'/><span className='rounded-md px-1 text-black font-secondary text-base leading-6 font-medium relative right-[20%]'>{state.cart.length}</span>
+                                    <ShoppingCartIcon className='mobile:!w-3'/>
+                                    {
+
+                                        state.cart.length > 0 && (
+                                            <div className='contents'>
+  <span className='rounded-md px-1 text-black font-secondary text-base leading-6 font-medium relative right-[20%]'>{state.cart.length}</span>
+     </div>
+        )
+         }
+                                    </div>
+                                    <div className='account_user'>
+                                     {
+                                        user.access_token && profile ? (
+                                            <div className='user_profile flex items-center gap-2'>
+
+                                            <img src={profile.picture} alt='profile_picture' className='rounded-full w-10 h-auto min-w[40px] min-h-fit object-cover'/>
+                                            <p className='font-secondary text-base leading-6 font-semibold'>{profile.name}</p>
+                                            <LogoutIcon onClick={logout} className='cursor-pointer'/>
+                                            </div>
+                                        ) :(
+                                            <AccountCircleIcon style={{cursor: 'pointer'}}/>
+
+                                        )
+                                     }
+
                                     </div>
                                   </div>
                              </div>
