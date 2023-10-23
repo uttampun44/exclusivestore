@@ -1,7 +1,7 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import Header from '../header/Header'
 import Footer from '../footer/Footer'
-import { Link } from 'react-router-dom'
+import { Link, json } from 'react-router-dom'
 import ContextApi from '../../contextapi/Context';
 
 
@@ -9,11 +9,59 @@ function Signup() {
 
      const {login} = useContext(ContextApi);
 
-
+     const [sign, setSign] = useState({
+          fullname: '',
+          email: '',
+          password: '',
+     })
       const googleLogin = (event) =>{
           login();
           event.preventDefault()
       }
+
+      const userInput = (e) =>{
+          setSign({...sign, [e.target.name] : e.target.value})
+      }
+
+
+      const createAccount = async(event) =>{
+          event.preventDefault();
+          const {fullname, email, password} = sign
+
+           if(sign.fullname === ""){
+               alert("Please fill the input field");
+               return false
+           }else if(!sign.email.includes('@') ){
+               alert("Please include @");
+               return false
+           }else if(sign.password === ""){
+               alert("Please enter the password");
+               return false
+           }else{
+               try {
+                    const creataccount = await fetch("/signup", {
+                         method: 'POST',
+                         mode: 'cors',
+                         headers:{
+                              'Content-Type' : 'application/json'
+                         },
+                         body:JSON.stringify({fullname, email, password})
+                    })
+                    if(creataccount.status === 200){
+                        await creataccount.json();
+                        setSign({...sign, fullname, email, password})
+                        window.location.href = "/account"
+
+                    }else {
+                       alert("Email Alreay Exists")
+                    }
+               } catch (error) {
+                  throw new Error
+               }
+           }
+      }
+
+
 
   return (
   <>
@@ -33,15 +81,16 @@ function Signup() {
                               </div>
 
                               <div className='signup_form mt-12 tablet:pr-8 tablet:mt-8'>
-                                   <form method='post'>
+                                   <form>
                                          <div className='input_signup grid gap-y-12 tablet:gap-y-8 mobile:gap-y-4'>
-                                            <input type='text' placeholder='Name' className='outline-none border-b-2 py-2'/>
-                                            <input type='text' placeholder='Email or Phone Number' className='outline-none border-b-2 py-2'/>
-                                            <input type='password' placeholder='password' className='outline-none border-b-2 py-2'/>
+                                            <input type='text' placeholder='Full Name' className='outline-none border-b-2 py-2' name='fullname' onChange={userInput} value={sign.fullname}/>
+                                            <input type='email' placeholder='Email or Phone Number' className='outline-none border-b-2 py-2' name='email' onChange={userInput} value={sign.email}/>
+
+                                            <input type='password' placeholder='password' className='outline-none border-b-2 py-2' name='password' onChange={userInput} value={sign.password}/>
                                          </div>
 
                                          <div className='submit_signup mt-10 bg-[#DB4444] py-4 px-24 text-center tablet:px-16'>
-                                              <button className='text-white font-secondary text-base font-medium leading-6'>Creat Account</button>
+                                              <button className='text-white font-secondary text-base font-medium leading-6' onClick={createAccount}>Creat Account</button>
                                          </div>
 
                                          <div className='signup_google mt-3 py-4 px-15 text-center flex items-center justify-center gap-2'>

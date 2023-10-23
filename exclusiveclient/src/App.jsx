@@ -5,6 +5,7 @@ import Login from './components/login/Login'
 import Products from './components/products/Products'
 import Cart from './components/cart/Cart'
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
+import Useraccount from './components/useraccount/Useraccount'
 import './App.css'
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
                 <Route exact path='/login' Component={Login}></Route>
                 <Route exact path='/products' Component={Products}></Route>
                 <Route exact path='/cart' Component={Cart}></Route>
+                <Route exact path='/account' Component={Useraccount}></Route>
                 <Route exact path='*'></Route>
            </Routes>
           </div>

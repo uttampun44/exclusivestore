@@ -10,6 +10,10 @@ export default defineConfig({
       '/api/products':{
         target: 'http://localhost:8080/',
         changeOrigin: true,
+      },
+      '/signup':{
+        target: 'http://localhost:8080/',
+        changeOrigin: true,
       }
     }
   },
