@@ -51,6 +51,7 @@ function Header() {
                                  <Link to='/' className='hover:border-b font-normal text-lg leading-5 font-secondary mobile:text-[8px]'>Home</Link>
                                  <Link to='/about' className='hover:border-b font-normal text-lg leading-5 font-secondary mobile:text-[8px]'>About</Link>
                                  <Link to='/signup' className='hover:border-b font-normal text-lg leading-5 font-secondary mobile:text-[8px]'>Sign up</Link>
+                                 <Link to='/login' className='hover:border-b font-normal text-lg leading-5 font-secondary mobile:text-[8px]'>Login</Link>
                              </div>
 
                              <div className='cart-row flex gap-4 items-center mobile:gap-2'>
