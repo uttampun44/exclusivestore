@@ -1,9 +1,60 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Header from '../header/Header'
 import Footer from '../footer/Footer'
 import { Link } from 'react-router-dom'
 
 function Login() {
+
+     const [login, setLogin] = useState({
+          fullname: '',
+          password: '',
+     })
+
+
+     const userLogin = (e) =>{
+        setLogin({...login, [e.target.name] : e.target.value})
+     }
+
+     const fetchUser = async() => {
+          const {fullname, password} = login
+        try {
+           const user = await fetch('/api/login',{
+               method: 'POST',
+               mode: 'cors',
+
+               headers:{
+                    'Content-Type' : 'application/json'
+               },
+               body:JSON.stringify({fullname, password})
+           })
+
+           if(user.status === 200){
+               await user.json();
+               setLogin({fullname, password})
+               window.location.href = "/account"
+           }
+        } catch (error) {
+
+        }
+     }
+
+     const loginAccount = async(event) =>{
+        event.preventDefault();
+        if(login.fullname === ""){
+          alert("Please fill the fullname")
+          return false;
+        }else if(login.password === ""){
+          alert("Please fill the password")
+          return false;
+        }else{
+          await fetchUser()
+        }
+     }
+
+     useEffect(() =>{
+          loginAccount()
+     },[])
+
   return (
    <>
       <Header />
@@ -22,19 +73,19 @@ function Login() {
                               </div>
 
                               <div className='login_form mt-12 tablet:pr-8 tablet:mt-8'>
-                                   <form method='post'>
+                                   <form>
                                          <div className='input_signup grid gap-y-12 tablet:gap-y-8'>
-                                            <input type='text' placeholder='Email or Phone Number' className='outline-none border-b-2 py-2'/>
-                                            <input type='password' placeholder='password' className='outline-none border-b-2 py-2'/>
+                                            <input type='text' placeholder='Email' className='outline-none border-b-2 py-2' onChange={userLogin} value={login.fullname} name='fullname'/>
+                                            <input type='password' placeholder='Password' className='outline-none border-b-2 py-2'  onChange={userLogin} value={login.password} name='password' />
                                          </div>
 
                                          <div className='login_signup mt-10 bg-[#DB4444] py-4 px-24 text-center tablet:px-16'>
-                                              <button className='text-white font-secondary text-base font-medium leading-6'>Creat Account</button>
+                                           <Link to='/signup'><button className='text-white font-secondary text-base font-medium leading-6'>Creat Account</button></Link>
                                          </div>
 
                                          <div className='login_google mt-3 py-4 px-15 text-center flex items-center justify-between gap-2'>
                                                <div className='login_button bg-[#DB4444] px-12 py-4 rounded-md tablet:px-5'>
-                                                    <button className='text-white leading-6 text-base font-secondary'>Log in</button>
+                                                    <button className='text-white leading-6 text-base font-secondary' onClick={loginAccount}>Log in</button>
                                                </div>
                                                <div className='forget_password'>
                                                      <button className='leading-6 text-base font-secondary text-[#DB4444]'>Forget password</button>

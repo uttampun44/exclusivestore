@@ -1,10 +1,11 @@
 import express from 'express'
 import exclusivestoreUser from '../modals/schema.js';
 
+
 const authentication = express.Router();
 
 // create account signup
-authentication.post("/signup", async(req, res) =>{
+authentication.post("/api/signup", async(req, res) =>{
     try {
         const {fullname, email, password} = req.body;
 
@@ -31,6 +32,16 @@ authentication.post("/signup", async(req, res) =>{
       })
       console.log(error)
     }
+  })
+
+
+  // login user
+
+  authentication.post('/api/login', async(req, res) =>{
+    console.log(req.body)
+    res.json({
+      message: 'Login Success'
+    })
   })
 
   export default authentication
