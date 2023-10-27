@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import Header from '../header/Header'
 import Footer from '../footer/Footer'
-import { Link, json } from 'react-router-dom'
+import { Link} from 'react-router-dom'
 import ContextApi from '../../contextapi/Context';
 
 
@@ -39,7 +39,7 @@ function Signup() {
                return false
            }else{
                try {
-                    const creataccount = await fetch("/signup", {
+                    const creataccount = await fetch("/api/signup", {
                          method: 'POST',
                          mode: 'cors',
                          headers:{
@@ -84,7 +84,7 @@ function Signup() {
                                    <form>
                                          <div className='input_signup grid gap-y-12 tablet:gap-y-8 mobile:gap-y-4'>
                                             <input type='text' placeholder='Full Name' className='outline-none border-b-2 py-2' name='fullname' onChange={userInput} value={sign.fullname}/>
-                                            <input type='email' placeholder='Email or Phone Number' className='outline-none border-b-2 py-2' name='email' onChange={userInput} value={sign.email}/>
+                                            <input type='email' placeholder='Email' className='outline-none border-b-2 py-2' name='email' onChange={userInput} value={sign.email}/>
 
                                             <input type='password' placeholder='password' className='outline-none border-b-2 py-2' name='password' onChange={userInput} value={sign.password}/>
                                          </div>

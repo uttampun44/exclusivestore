@@ -11,7 +11,11 @@ export default defineConfig({
         target: 'http://localhost:8080/',
         changeOrigin: true,
       },
-      '/signup':{
+      '/api/signup':{
+        target: 'http://localhost:8080/',
+        changeOrigin: true,
+      },
+      '/api/login':{
         target: 'http://localhost:8080/',
         changeOrigin: true,
       }
