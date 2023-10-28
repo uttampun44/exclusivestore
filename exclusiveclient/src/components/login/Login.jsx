@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import Header from '../header/Header'
 import Footer from '../footer/Footer'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 function Login() {
 
+        const user_account = useNavigate();
+
      const [login, setLogin] = useState({
-          fullname: '',
+          email: '',
           password: '',
      })
 
@@ -15,45 +17,39 @@ function Login() {
         setLogin({...login, [e.target.name] : e.target.value})
      }
 
-     const fetchUser = async() => {
-          const {fullname, password} = login
-        try {
-           const user = await fetch('/api/login',{
-               method: 'POST',
-               mode: 'cors',
-
-               headers:{
-                    'Content-Type' : 'application/json'
-               },
-               body:JSON.stringify({fullname, password})
-           })
-
-           if(user.status === 200){
-               await user.json();
-               setLogin({fullname, password})
-               window.location.href = "/account"
-           }
-        } catch (error) {
-
-        }
-     }
-
      const loginAccount = async(event) =>{
         event.preventDefault();
-        if(login.fullname === ""){
-          alert("Please fill the fullname")
+        if(login.email === ""){
+          alert("Please fill the email")
           return false;
         }else if(login.password === ""){
           alert("Please fill the password")
           return false;
         }else{
-          await fetchUser()
+          const {email, password} = login
+          try {
+             const user = await fetch('/api/login',{
+                 method: 'POST',
+                 mode: 'cors',
+
+                 headers:{
+                      'Content-Type' : 'application/json'
+                 },
+                 body:JSON.stringify({email, password})
+             })
+              console.log(user);
+              const data = await user.json();
+              console.log(data)
+             if(user.status === 201){
+                  localStorage.setItem("user_token_data", data.token_result.user_token);
+                 setLogin({email, password})
+                user_account('/account')
+             }
+          } catch (error) {
+             console.log(error)
+          }
         }
      }
-
-     useEffect(() =>{
-          loginAccount()
-     },[])
 
   return (
    <>
@@ -75,7 +71,7 @@ function Login() {
                               <div className='login_form mt-12 tablet:pr-8 tablet:mt-8'>
                                    <form>
                                          <div className='input_signup grid gap-y-12 tablet:gap-y-8'>
-                                            <input type='text' placeholder='Email' className='outline-none border-b-2 py-2' onChange={userLogin} value={login.fullname} name='fullname'/>
+                                            <input type='text' placeholder='Email' className='outline-none border-b-2 py-2' onChange={userLogin} value={login.email} name='email'/>
                                             <input type='password' placeholder='Password' className='outline-none border-b-2 py-2'  onChange={userLogin} value={login.password} name='password' />
                                          </div>
 

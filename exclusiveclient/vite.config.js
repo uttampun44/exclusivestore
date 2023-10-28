@@ -7,18 +7,10 @@ export default defineConfig({
   "server":{
     port: '3000',
     proxy: {
-      '/api/products':{
-        target: 'http://localhost:8080/',
+      '/api': {
+        target: process.env.API_SERVER || 'http://localhost:8080',
         changeOrigin: true,
       },
-      '/api/signup':{
-        target: 'http://localhost:8080/',
-        changeOrigin: true,
-      },
-      '/api/login':{
-        target: 'http://localhost:8080/',
-        changeOrigin: true,
-      }
     }
   },
 })
