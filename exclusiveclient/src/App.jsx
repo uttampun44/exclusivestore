@@ -6,6 +6,7 @@ import Products from './components/products/Products'
 import Cart from './components/cart/Cart'
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
 import Useraccount from './components/useraccount/Useraccount'
+import Error from './page/error/Error'
 import './App.css'
 
 function App() {
@@ -22,7 +23,7 @@ function App() {
                 <Route exact path='/products' Component={Products}></Route>
                 <Route exact path='/cart' Component={Cart}></Route>
                 <Route exact path='/account' Component={Useraccount}></Route>
-                <Route exact path='*'></Route>
+                <Route exact path='*'  Component={Error}></Route>
            </Routes>
           </div>
      </BrowserRouter>

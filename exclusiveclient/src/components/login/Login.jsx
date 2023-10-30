@@ -37,13 +37,15 @@ function Login() {
                  },
                  body:JSON.stringify({email, password})
              })
-              console.log(user);
+
               const data = await user.json();
-              console.log(data)
+
              if(user.status === 201){
                   localStorage.setItem("user_token_data", data.token_result.user_token);
                  setLogin({email, password})
-                user_account('/account')
+                 user_account('/account')
+             }else{
+               alert("Email or password error")
              }
           } catch (error) {
              console.log(error)
