@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import { Link } from 'react-router-dom'
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
@@ -11,13 +11,40 @@ import { googleLogout } from '@react-oauth/google';
 function Header() {
 
     const {state} = useContext(ContextApi)
-    const {profile, setProfile, user} = useContext(ContextApi);
+    const {profile, setProfile, user, products, searchValue, setSearchValue, showproduct, setShowProduct} = useContext(ContextApi);
+    const [filterproducts, setFilter] = useState(products)
 
-
+    console.log(filterproducts);
       const logout = () =>{
         googleLogout()
         setProfile(null)
       }
+
+      const productFinder = (event) =>{
+
+         const value = event.target.value;
+         setSearchValue(value)
+      }
+
+  const search = () =>{
+
+    const filtered = products.filter((product) =>
+    product.productName.toLowerCase().includes(searchValue.toLowerCase())
+       );
+       if(filtered.length > 0){
+          setFilter(filtered);
+          setShowProduct(true)
+       }else{
+          alert("Product Not Found")
+       }
+    console.log("search")
+  }
+
+  const closeSearch = () =>{
+    setShowProduct(null)
+    setSearchValue("")
+  }
+
   return (
     <div>
             <header>
@@ -56,10 +83,24 @@ function Header() {
 
                              <div className='cart-row flex gap-4 items-center mobile:gap-2'>
                                   <div className='header-input-search relative'>
-                                         <input type='text' placeholder='What are you looking for ?' className='border-0 outline-none bg-primary py-2 px-3 mobile:text-[7px] mobile:px-2 mobile:leading-4'/>
-                                         <SearchIcon className='absolute right-5 top-2 mobile:!w-3 mobile:right-1 mobile:top-1'/>
+                                         <input type='text' placeholder='What are you looking for ?' className='border-0 outline-none bg-primary py-2 px-3 mobile:text-[7px] mobile:px-2 mobile:leading-4' onChange={productFinder} value={searchValue}/>
+                                         <SearchIcon className='absolute right-5 top-2 mobile:!w-3 mobile:right-1 mobile:top-1' onClick={search}/>
                                   </div>
 
+                                   <div className='realtive'>
+                                   {showproduct && (
+                                                   <div className='bg-black absolute right-[25%] p-8 z-50 m-8 rounded-md  mobile:right-[0%] desktop:right-[12%]'>
+                                                  {filterproducts.map((product) => (
+                                                   <div  key={product.id}>
+                                                     <p className='text-white mb-4 font-secondary text-base font-medium leading-6'>{product.productName}</p>
+                                                     <img src={product.image} alt='product_name' />
+                                                     <p className='text-white mt-4 font-secondary text-base font-medium leading-6'>{product.price}</p>
+                                                     <button className='text-white bg-[#DB4444] px-4 mt-3 py-3 rounded-sm font-secondary text-base font-medium leading-6' onClick={closeSearch}>Close Search</button>
+                                                   </div>
+                                         ))}
+                                    </div>
+                                  )}
+                                   </div>
                                   <div className='whistlist-cart flex gap-4 items-center mobile:gap-1'>
                                      <FavoriteIcon className='mobile:!w-3' />
                                     <div className='shopping_cart relative'>

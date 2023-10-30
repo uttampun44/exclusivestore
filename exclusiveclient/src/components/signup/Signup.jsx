@@ -1,11 +1,13 @@
 import React, { useContext, useEffect, useState } from 'react'
 import Header from '../header/Header'
 import Footer from '../footer/Footer'
-import { Link} from 'react-router-dom'
+import { Link, useNavigate} from 'react-router-dom'
 import ContextApi from '../../contextapi/Context';
 
 
 function Signup() {
+
+     const redirect_account = useNavigate()
 
      const {login} = useContext(ContextApi);
 
@@ -50,10 +52,9 @@ function Signup() {
                     if(creataccount.status === 200){
                         await creataccount.json();
                         setSign({...sign, fullname, email, password})
-                        window.location.href = "/account"
-
+                        redirect_account('/account');
                     }else {
-                       alert("Email Alreay Exists")
+                       alert("Email Alreay Exists");
                     }
                } catch (error) {
                   throw new Error
