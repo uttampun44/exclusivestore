@@ -1,7 +1,9 @@
 import mongoose from 'mongoose';
+import dotenv from 'dotenv'
 
+dotenv.config()
 
-const db = 'mongodb+srv://Ryderuttam:Ryderuttam@cluster0.rs3wn4v.mongodb.net/exclusivestore?retryWrites=true&w=majority'
+const db = process.env.MONGO_DATABASE
 const exclusiveStore = async() => {
 
     try {

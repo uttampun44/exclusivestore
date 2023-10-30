@@ -19,6 +19,10 @@ const AppProvider = ({children}) => {
    const [profile, setProfile] = useState([]);
    const [user, setUser] = useState([]);
 
+  //  search products
+  const [searchValue, setSearchValue] = useState('');
+  const [showproduct, setShowProduct] = useState(false);
+
    const login = useGoogleLogin({
      onSuccess: (codeResponse) => {
        setUser(codeResponse);
@@ -82,7 +86,8 @@ useEffect(() =>{
 
 
    return(
-         <ContextApi.Provider value={{products, setProducts, state, dispatch, profile, setProfile, user, setUser, login}}>
+         <ContextApi.Provider value={{products, setProducts, state, dispatch, profile, setProfile,
+         user, setUser, login, searchValue, setSearchValue, showproduct, setShowProduct}}>
              {children}
          </ContextApi.Provider>
    )

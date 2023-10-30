@@ -20,12 +20,11 @@ authentication.post("/api/signup", async(req, res) =>{
               if(userExists){
                  res.status(400).json({ message: 'Email Already Exists' });
               }else{
-
                 // inserting the new users
                 const insert_user = new exclusivestoreUser({fullname, email, password})
                 const data = await insert_user.save();
                 res.status(200).json({Message: 'Form Submit', data})
-              console.log(req.body)
+
               }
             }
     } catch (error) {
@@ -39,7 +38,7 @@ authentication.post("/api/signup", async(req, res) =>{
 
   // login
   authentication.post('/api/login', async(req, res) =>{
-    console.log(req.body)
+
     try {
       const {email, password} = req.body
 
@@ -57,7 +56,6 @@ authentication.post("/api/signup", async(req, res) =>{
               res.status(422).json({Errormessage: 'password not bycrpt'})
              }else{
 
-              // res.status(200).json({Successmessage: 'Login Success'})
               // user token generate and cookies
               const user_token = await userExists.generateAuthtoken();
 
@@ -71,7 +69,6 @@ authentication.post("/api/signup", async(req, res) =>{
                    user_token
                 }
                 res.status(201).json({tokenCreated: 'Token Created', token_result});
-                console.log(token_result);
              }
            }
         }
@@ -84,6 +81,13 @@ authentication.post("/api/signup", async(req, res) =>{
 
   // useraccount routes
 authentication.get('/api/useraccount', authenticate, async(req, res) =>{
-   res.status(200).json({UserDetails : 'Getting Successfully'});
+
+   try {
+       const validUser = await exclusivestoreUser.findOne({_id: req.user})
+       res.status(200).json({UserDetails : validUser});
+
+   } catch (error) {
+      res.status(401).json({status:401, error})
+   }
 })
   export default authentication

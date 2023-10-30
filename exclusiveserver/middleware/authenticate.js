@@ -13,7 +13,6 @@ const authenticate = async(req, res, next) =>{
       const token = req.headers.authorization;
 
       const verify_token = Jwt.verify(token, secret_key)
-      console.log(verify_token);
 
       const user_id = await exclusivestoreUser.findOne({id: verify_token._id})
 
@@ -22,6 +21,8 @@ const authenticate = async(req, res, next) =>{
       }
       req.token = token;
       req.user_id = user_id;
+      req.user =  user_id.id;
+
       next();
 
   } catch (error) {
