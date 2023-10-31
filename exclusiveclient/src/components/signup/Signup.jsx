@@ -52,7 +52,8 @@ function Signup() {
                     if(creataccount.status === 200){
                         await creataccount.json();
                         setSign({...sign, fullname, email, password})
-                        redirect_account('/account');
+                        redirect_account('/login');
+                        alert("Account created successfylly")
                     }else {
                        alert("Email Alreay Exists");
                     }
