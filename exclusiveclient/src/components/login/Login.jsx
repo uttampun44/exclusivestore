@@ -41,7 +41,7 @@ function Login() {
               const data = await user.json();
 
              if(user.status === 201){
-                  localStorage.setItem("user_token_data", data.token_result.user_token);
+                  localStorage.setItem("user_token_data", data.token_result);
                  setLogin({email, password})
                  user_account('/account')
              }else{
