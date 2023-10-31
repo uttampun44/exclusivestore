@@ -60,8 +60,8 @@ function Useraccount() {
                        </div>
 
                        <div className='user_info grid justify-center'>
-                           <p className='font-semibold text-black leading-8 text-2xl font-secondary'>Email: <span className='font-normal'>{user && user.UserDetails.email}</span> </p>
-                           <p className='font-semibold text-black leading-8 text-2xl font-secondary'>Full Name: <span className='font-normal'>{user && user.UserDetails.fullname}</span> </p>
+                           {/* <p className='font-semibold text-black leading-8 text-2xl font-secondary'>Email: <span className='font-normal'>{user && user.UserDetails.email}</span> </p> */}
+                           {/* <p className='font-semibold text-black leading-8 text-2xl font-secondary'>Full Name: <span className='font-normal'>{user && user.UserDetails.fullname}</span> </p> */}
                            <button onClick={logout} className='bg-[#DB4444] px-4 py-4 mt-5 text-white font-secondary text-base font-medium leading-6 rounded-sm'>Logout</button>
                        </div>
                   </div>
