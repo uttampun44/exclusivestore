@@ -7,7 +7,9 @@ command npm install, and it will install npm in the exclusivestoreclient.
 # Project Features
 💻 
 Authentication
+
 Product Search Filtert
+
 Google Authentication
 Shopping Cart
 slider
