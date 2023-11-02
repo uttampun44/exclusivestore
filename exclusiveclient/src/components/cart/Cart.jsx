@@ -8,18 +8,21 @@ import { Link } from 'react-router-dom';
 import DeleteIcon from '@mui/icons-material/Delete';
 
 
-function Cart() {
+function Cart({productName}) {
 
     const {state, dispatch} = useContext(ContextApi)
+
+    console.log(state)
+
    const [quantity, setQuantity] = useState(false);
 
-    const deleteItem = (item) =>{
-      dispatch({type: 'REMOVE_FROM_CART', payload: item})
+    const deleteItem = () =>{
+      dispatch({type: 'REMOVE_FROM_CART', payload: productName})
     }
 
 
-    const incrementQuantity = (productId) =>{
-      dispatch({type: 'INCREMENT_QUANTITY', payload: { id: productId }})
+    const incrementQuantity = (productName) =>{
+      dispatch({type: 'INCREMENT_QUANTITY', payload: productName})
       setQuantity(!quantity);
     }
 
@@ -83,7 +86,7 @@ function Cart() {
                                                                  <p className='font-secondary text-base leading-6 font-medium'>{singleproduct.quantity}</p>
                                                              </div>
                                                              <div className='quanity_increase_decrease grid'>
-                                                                   <ExpandLessIcon onClick={() => incrementQuantity(singleproduct.id)}/>
+                                                                   <ExpandLessIcon onClick={() => incrementQuantity(singleproduct.productName)}/>
                                                                    <KeyboardArrowDownIcon onClick = {() => decrement(singleproduct)}/>
                                                              </div>
                                                           </div>
@@ -93,7 +96,7 @@ function Cart() {
                                                           </div>
 
                                                           <div className='remove_item_cart'>
-                                                             <DeleteIcon color='#DB4444' style={{cursor: 'pointer'}} onClick={() => deleteItem(singleproduct.id)}/>
+                                                             <DeleteIcon color='#DB4444' style={{cursor: 'pointer'}} onClick={() => deleteItem(singleproduct.productName)}/>
                                                           </div>
                                                          </div>
                                                     </div>

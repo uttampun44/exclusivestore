@@ -15,10 +15,12 @@ export const Cartreducer = (state, action) => {
 
         // remove from cart functionality
       case 'REMOVE_FROM_CART':
-        return {
-          ...state,
-          cart: state.cart.filter((item) => item.id !== action.payload),
-        };
+        const updatedCart = state.cart.filter((item) => item.productName !== action.payload);
+      return {
+        ...state,
+        cart: updatedCart,
+      };
+
 
         // increment quantity
         case 'INCREMENT_QUANTITY':
