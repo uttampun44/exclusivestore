@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
 import ContextApi from '../../contextapi/Context';
 
-function Ourproducts({image, productName, price}) {
+function Ourproducts({id, image, productName, price}) {
 
     const history = useNavigate();
 
@@ -10,7 +10,7 @@ function Ourproducts({image, productName, price}) {
 
   const cart = () => {
 
-   const product = { productName, image, price };
+   const product = {id, productName, image, price };
 
    dispatch({type:'ADD_TO_CART', payload:product})
 
@@ -19,7 +19,8 @@ function Ourproducts({image, productName, price}) {
 
   return (
     <div>
-      <div className='products grid mobile:gap-y-4 mobile:w-[100%] pr-4 gap-y-4 my-5 text-center' >
+     <figure>
+     <div className='products grid mobile:gap-y-4 mobile:w-[100%] pr-4 gap-y-4 my-5 text-center' >
          <img src={image} alt='product_image' className='w-[100%] h-[140px] object-contain mobile:w-[60px] mobile:h-[60px]'/>
       <div className='product_price'>
 
@@ -32,6 +33,7 @@ function Ourproducts({image, productName, price}) {
      </div>
 
         </div>
+     </figure>
     </div>
   )
 }

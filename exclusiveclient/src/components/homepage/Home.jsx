@@ -99,17 +99,18 @@ function Home() {
                        </div>
 
                        {/* product carousel */}
+                       <figure>
                        <div className='product_gallery flex justify-between items-end mb-14 mobile:row-y-4'>
-
-                           {
-                                products.slice(0, 5).map((product) =>{
+                             {
+                            products.slice(0, 5).map((product) =>{
                                   return(
                                     <Sales key={product.id} {...product}/>
-                                  )
-                                })
-                             }
+                                )
+                             })
+                           }
+                         </div>
+                       </figure>
 
-                       </div>
                        <div className='view_products flex justify-center my-16'>
                                   <Link to='/products' className='bg-[#DB4444] py-4 text-base font-secondary leading-6 px-12 font-medium text-white mobile:px-4 mobile:text-xs'>View All Products</Link>
                        </div>
