@@ -7,9 +7,14 @@
         }
     ],
     "routes": [
+        { "handle": "filesystem" },
         {
-            "src": "/assets/images/*",
-            "dest": "/"
+          "src": "/assets/images/(.*)",
+          "destination": "/src/assets/images/$1"
+        },
+        {
+          "src": "/(.*)",
+          "dest": "/index.html"
         }
     ]
 }
