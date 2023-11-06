@@ -15,6 +15,35 @@ function Home() {
 
     const {products} = useContext(ContextApi);
 
+   const [date, setDate] = useState({
+     days: 0,
+     hours: 0,
+     minutes: 0,
+     seconds: 0 });
+
+   const dateSales = () => {
+
+    let saleDay = new Date("2023/11/10");
+
+    let currentDate = new Date();
+
+    let daysRemaining = saleDay - currentDate;
+
+       if(daysRemaining > 0){
+
+        let days = Math.floor(daysRemaining / (1000 * 60 * 60 * 24))
+        let hours = Math.floor((daysRemaining % (1000 * 60 * 60 * 24) / (1000 * 60 * 60)))
+        let minutes = Math.floor((daysRemaining % (1000 * 60 * 60) / (1000 * 60)))
+        let seconds = Math.floor((daysRemaining % (1000 * 60 ) / 1000))
+
+        const remaingDays  = {days, hours, minutes, seconds};
+        setDate(remaingDays);
+       }else{
+
+        setDate({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+       }
+   }
+
    const carousel = [
      {
       image: '/src/assets/images/fashion.webp',
@@ -29,6 +58,18 @@ function Home() {
       objectFit: 'fill'
      }
    ]
+
+   useEffect(() =>{
+     dateSales()
+    const offer = setInterval(() =>{
+        dateSales()
+    }, 1000)
+
+    return () =>{
+        clearInterval(offer)
+    }
+   }, [])
+
 
   return (
     <main>
@@ -77,22 +118,22 @@ function Home() {
                            <div className='flash_sales_title self-end'>
                                <h1 className='text-secondary font-primary text-2xl font-semibold leading-10 mobile:text-base'>Flash Sales</h1>
                            </div>
-                           <div className='days_limit_offer flex gap-4'>
-                               <div className='offer_days'>
-                                   <p className='text-secondary font-secondary text-xs leading-5 font-medium '>Days</p>
-                                   <p className='text-secondary font-primary text-2xl font-bold leading-8  mobile:text-sm mobile:leading-4'>03 <span>:</span></p>
+                           <div className='days_limit_offer flex gap-4 text-center'>
+                               <div className='offer_days bg-[#DB4444] p-1 rounded-md w-[75%]'>
+                                   <p className='text-secondary font-secondary text-xs leading-5 font-medium text-white'>Days</p>
+                                   <p className='text-secondary font-primary text-2xl font-bold leading-8  mobile:text-sm mobile:leading-4 text-white'>{date.days}</p>
                                </div>
-                               <div className='offer_hours'>
-                                 <p className='text-secondary font-secondary text-xs leading-5 font-medium'>Hours</p>
-                                 <p className='text-secondary font-primary text-2xl font-bold leading-8  mobile:text-sm mobile:leading-4'>04  <span>:</span></p>
+                               <div className='offer_hours bg-[#DB4444] p-1 rounded-md w-[100%]'>
+                                 <p className='text-secondary font-secondary text-xs leading-5 font-medium text-white'>Hours</p>
+                                 <p className='text-secondary font-primary text-2xl font-bold leading-8  mobile:text-sm mobile:leading-4 text-white'>{date.hours}</p>
                                </div>
-                               <div className='offer_minutes'>
-                                  <p className='text-secondary font-secondary text-xs leading-5 font-medium'>Minutes</p>
-                                  <p className='text-secondary font-primary text-2xl font-bold leading-8  mobile:text-sm mobile:leading-4'>30 <span>:</span></p>
+                               <div className='offer_minutes bg-[#DB4444]  rounded-md w-[100%] p-1'>
+                                  <p className='text-secondary font-secondary text-xs leading-5 font-medium text-white'>Minutes</p>
+                                  <p className='text-secondary font-primary text-2xl font-bold leading-8  mobile:text-sm mobile:leading-4 text-white'>{date.minutes}</p>
                                </div>
-                               <div className='offer_seconds'>
-                                   <p className='text-secondary font-secondary text-xs leading-5 font-medium'>Seconds</p>
-                                   <p className='text-secondary font-primary text-2xl font-bold leading-8 mobile:text-sm mobile:leading-4'>03</p>
+                               <div className='offer_seconds bg-[#DB4444] p-1 rounded-md w-[100%]'>
+                                   <p className='text-secondary font-secondary text-xs leading-5 font-medium text-white'>Seconds</p>
+                                   <p className='text-secondary font-primary text-2xl font-bold leading-8 mobile:text-sm mobile:leading-4 text-white'>{date.seconds}</p>
                                </div>
                            </div>
                            </div>
@@ -174,19 +215,19 @@ function Home() {
                                     <div className='days_limit_offer flex gap-4 mt-10'>
                                <div className='music_days bg-white px-3 py-2 rounded-[50%] mobile:rounded-[unset] tablet:w-[20%] w-[13%] text-center mobile:w-[unset]'>
                                    <p className='text-secondary font-secondary text-xs leading-5 font-medium '>Days</p>
-                                   <p className='text-secondary font-primary text-2xl font-bold leading-8  mobile:text-xs mobile:leading-4'>03</p>
+                                   <p className='text-secondary font-primary text-2xl font-bold leading-8  mobile:text-xs mobile:leading-4'>{date.days}</p>
                                </div>
                                <div className='music_hours bg-white px-3 py-2 rounded-[50%] mobile:rounded-[unset] tablet:w-[20%] w-[13%] text-center mobile:w-[unset]'>
                                  <p className='text-secondary font-secondary text-xs leading-5 font-medium'>Hours</p>
-                                 <p className='text-secondary font-primary text-2xl font-bold leading-8  mobile:text-xs mobile:leading-4'>04</p>
+                                 <p className='text-secondary font-primary text-2xl font-bold leading-8  mobile:text-xs mobile:leading-4'>{date.hours}</p>
                                </div>
                                <div className='music_minutes bg-white px-3 py-2 rounded-[50%] mobile:rounded-[unset] tablet:w-[20%] w-[13%] text-center mobile:w-[unset]'>
                                   <p className='text-secondary font-secondary text-xs leading-5 font-medium'>Minutes</p>
-                                  <p className='text-secondary font-primary text-2xl font-bold leading-8  mobile:text-xs mobile:leading-4'>30</p>
+                                  <p className='text-secondary font-primary text-2xl font-bold leading-8  mobile:text-xs mobile:leading-4'>{date.minutes}</p>
                                </div>
                                <div className='music_seconds bg-white px-2 py-2 rounded-[50%] mobile:rounded-[unset] tablet:w-[20%] w-[13%] text-center mobile:w-[unset]'>
                                    <p className='text-secondary font-secondary text-xs leading-5 font-medium'>Seconds</p>
-                                   <p className='text-secondary font-primary text-2xl font-bold leading-8 mobile:text-xs mobile:leading-4'>03</p>
+                                   <p className='text-secondary font-primary text-2xl font-bold leading-8 mobile:text-xs mobile:leading-4'>{date.seconds}</p>
                                </div>
                            </div>
 
@@ -195,7 +236,7 @@ function Home() {
                            </div>
                                 </div>
 
-                                <div className='jbl_image w-[50%]'>
+                                <div className='jbl_image w-[50%] mobile:w-[100%]'>
                                    <img src='/src/assets/images/jbl.webp' className='tablet:w-[300px] tablet:h-[auto] tablet:object-contain'/>
                                 </div>
 
