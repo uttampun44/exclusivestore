@@ -52,26 +52,24 @@ export const Cartreducer = (state, action) => {
 
         case 'DECREMENT_QUANTITY':
 
-        const decrement = state.cart.map((item) => {
+          const decrement = state.cart.map((item) => {
+            if (item.productName === action.payload && item.quantity > 1) {
+              return {
+                ...item,
+                quantity: item.quantity - 1,
+                subtotal: (item.quantity - 1) * item.price,
+              };
+            }
+            return item;
+          });
 
-          if(item.productName === action.payload && item.quantity > 1){
-            const updateDecrement = {
-              ...item,
-              quantity : item.quantity - 1,
-              subtotal: (item.quantity - 1) * item.price
+          return {
+            ...state,
+            cart: decrement,
+            price: decrement.reduce((total, item) => total + item.subtotal, 0),
+            quantity: state.quantity - 1,
+          };
 
-            };
-            return updateDecrement;
-          }
-          return item
-        })
-
-        return {
-          ...state,
-          cart: decrement,
-          price: decrement.reduce((total, item) => total + item.subtotal, 0),
-          quantity: state.quantity - 1,
-        }
       default:
         return state;
     }
