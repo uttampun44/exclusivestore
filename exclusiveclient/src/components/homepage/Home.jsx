@@ -107,7 +107,7 @@ function Home() {
 
                            </div>
                            <div className='deal_row_title'>
-                               <p className='text-[#DB4444] font-secondary text-lg font-semibold leading-5'>Today's Deal</p>
+                               <p className='text-[#DB4444] font-secondary text-lg font-semibold leading-7'>Today's Deal</p>
                            </div>
                        </div>
 
