@@ -15,19 +15,22 @@ export const Cartreducer = (state, action) => {
 
         // remove from cart functionality
       case 'REMOVE_FROM_CART':
-        const updatedCart = state.cart.filter((item) => item.productName !== action.payload);
-      return {
-        ...state,
-        cart: updatedCart,
-      };
+    const removedItem = state.cart.find(item => item.productName === action.payload);
+    const updatedCart = state.cart.filter(item => item.productName !== action.payload);
 
+  return {
+    ...state,
+    cart: updatedCart,
+    price: state.price - (removedItem.price * removedItem.quantity),
+    quantity: state.quantity - removedItem.quantity,
+  };
 
         // increment quantity
         case 'INCREMENT_QUANTITY':
 
         const increment = state.cart.map((item) => {
 
-          if(item.id === action.payload.id){
+          if(item.productName === action.payload){
             return {
               ...item,
               quantity : item.quantity + 1,
@@ -51,7 +54,7 @@ export const Cartreducer = (state, action) => {
 
         const decrement = state.cart.map((item) => {
 
-          if(item.id === action.payload.id && item.quantity > 1){
+          if(item.productName === action.payload && item.quantity > 1){
             const updateDecrement = {
               ...item,
               quantity : item.quantity - 1,

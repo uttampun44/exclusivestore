@@ -8,21 +8,19 @@ import { Link } from 'react-router-dom';
 import DeleteIcon from '@mui/icons-material/Delete';
 
 
-function Cart({productName}) {
+function Cart() {
 
     const {state, dispatch} = useContext(ContextApi)
 
-    console.log(state)
-
    const [quantity, setQuantity] = useState(false);
 
-    const deleteItem = () =>{
-      dispatch({type: 'REMOVE_FROM_CART', payload: productName})
+    const deleteItem = (id) =>{
+      dispatch({type: 'REMOVE_FROM_CART', payload: id})
     }
 
 
-    const incrementQuantity = (productName) =>{
-      dispatch({type: 'INCREMENT_QUANTITY', payload: productName})
+    const incrementQuantity = (id) =>{
+      dispatch({type: 'INCREMENT_QUANTITY', payload: id})
       setQuantity(!quantity);
     }
 
@@ -87,7 +85,7 @@ function Cart({productName}) {
                                                              </div>
                                                              <div className='quanity_increase_decrease grid'>
                                                                    <ExpandLessIcon onClick={() => incrementQuantity(singleproduct.productName)}/>
-                                                                   <KeyboardArrowDownIcon onClick = {() => decrement(singleproduct)}/>
+                                                                   <KeyboardArrowDownIcon onClick = {() => decrement(singleproduct.productName)}/>
                                                              </div>
                                                           </div>
 
