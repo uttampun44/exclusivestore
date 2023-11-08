@@ -31,4 +31,4 @@ app.get('/', (req, res) =>{
 
 })
 
-app.listen(port, (req, res) => console.log(`The port is running on ${port}`))
+app.listen(port, '0.0.0.0',  (req, res) => console.log(`The port is running on ${port}`))
