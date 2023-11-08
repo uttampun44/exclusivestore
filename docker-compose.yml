@@ -1,0 +1,19 @@
+version: "3.8"
+services:
+    reactapp:  #react app front
+      build: ./exclusiveclient
+      container_name: exclusivestore
+      ports:
+        - '3000:3000'
+      environment:
+        - NODE_ENV=development
+
+
+    #nodejsapplication
+    expressapp:
+      build: ./exclusiveserver
+      container_name: exclusivebackend
+      ports:
+        - '8080:8080'
+      environment:
+        - NODE_ENV=development
