@@ -60,7 +60,7 @@ authentication.post("/api/signup", async(req, res) =>{
               const user_token = await userExists.generateAuthtoken();
 
               res.cookie("user_cookie", user_token, {
-                expires:new Date(Date.now() + 6000000),
+                expires:new Date(Date.now() + 2000000),
                 httpOnly: true
               })
 
