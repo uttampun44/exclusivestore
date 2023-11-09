@@ -1,19 +1,31 @@
 version: "3.8"
 services:
-    reactapp:  #react app front
-      build: ./exclusiveclient
-      container_name: exclusivestore
-      ports:
-        - '3000:3000'
-      environment:
-        - NODE_ENV=development
+  reactapp:  # React app front image name
+    build:
+      context: ./exclusiveclient
+      dockerfile: Dockerfile
+    container_name: exclusivestore
+    networks:
+      - mernnetwork
+    ports:
+      - '3000:3000'
+    environment:
+      - NODE_ENV=development
+    volumes:
+      - ./exclusiveclient:/app
 
 
-    #nodejsapplication
-    expressapp:
-      build: ./exclusiveserver
-      container_name: exclusivebackend
-      ports:
-        - '8080:8080'
-      environment:
-        - NODE_ENV=development
+  expressapp: #backend expressjs image name
+    build:
+       context: ./exclusiveserver
+       dockerfile: Dockerfile
+    container_name: exclusivebackend
+    ports:
+      - '8080:8080'
+    environment:
+      - NODE_ENV=development
+    volumes:
+      - ./exclusiveserver:/app
+
+networks:
+  mernnetwork:
