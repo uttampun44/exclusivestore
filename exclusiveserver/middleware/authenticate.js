@@ -14,6 +14,7 @@ const authenticate = async(req, res, next) =>{
 
       const verify_token = Jwt.verify(token, secret_key)
 
+
       const user_id = await exclusivestoreUser.findOne({id: verify_token._id})
 
       if(!user_id){
