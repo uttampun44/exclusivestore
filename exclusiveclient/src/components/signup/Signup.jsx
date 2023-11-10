@@ -78,7 +78,7 @@ function Signup() {
 
                            <div className='signup_second_cols desktoplarge:w-[30%] pl-[9vw] tablet:pl-[3vw] desktop:w-[40%] laptop:w-[45%] mobile:grid mobile:w-[80%] mobile:mx-auto mobile:pl-[unset] tablet:mt-24'>
                               <div className='signup_create_account'>
-                                   <p className='font-secondary text-4xl font-medium leading-12 laptop:text-2xl tablet:text-xl tablet:leading-6'>Create an account</p>
+                                   <p className='font-secondary text-4xl font-medium leading-12 laptop:text-2xl tablet:text-xl tablet:leading-6 mobile:text-3xl'>Create an account</p>
                                    <p className='font-secondary text-base leading-5 font-normal pt-6'>Enter your details below</p>
                               </div>
 
