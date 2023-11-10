@@ -11,7 +11,9 @@ const app = express();
 
 dotenv.config();
 
-const port = process.env.PORT
+const port = process.env.PORT || 8080;
+
+const backend = process.env.BACKEND_URL || 'http://localhost:8080';
 
 exclusiveStore();
 // // middleware
