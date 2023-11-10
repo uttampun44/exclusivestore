@@ -53,7 +53,7 @@ function Signup() {
                         await creataccount.json();
                         setSign({...sign, fullname, email, password})
                         redirect_account('/login');
-                        alert("Account created successfylly")
+                        alert("Account created successfully")
                     }else {
                        alert("Email Alreay Exists");
                     }
