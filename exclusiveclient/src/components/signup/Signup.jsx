@@ -49,7 +49,7 @@ function Signup() {
                          },
                          body:JSON.stringify({fullname, email, password})
                     })
-                    if(creataccount.status === 200){
+                    if(creataccount.status == 200){
                         await creataccount.json();
                         setSign({...sign, fullname, email, password})
                         redirect_account('/login');
