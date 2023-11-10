@@ -41,6 +41,6 @@ Authentication
 Sale offer day 💥💥
 
 😎😎
-# This is little advance than beginner project 
+# This is little advance beginner project 
 
 
