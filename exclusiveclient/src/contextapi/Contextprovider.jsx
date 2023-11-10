@@ -43,7 +43,7 @@ const AppProvider = ({children}) => {
 
          const userData = await userProfile.json();
 
-         if (userProfile.status === 200) {
+         if (userProfile.status == 200) {
            setProfile(userData);
          }
        }
@@ -66,7 +66,7 @@ const AppProvider = ({children}) => {
          })
 
          const data = await response.json();
-         if (response.status === 200) {
+         if (response.status == 200) {
           setProducts(data.products);
         }
 
