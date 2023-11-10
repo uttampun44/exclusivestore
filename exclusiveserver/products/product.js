@@ -1,3 +1,5 @@
+const baseImageURL = process.env.NODE_ENV === 'production' ? 'https://your-production-domain.com/images/' : 'http://localhost:8080/images/';
+
 const product = {
    products : [
 
@@ -7,7 +9,7 @@ const product = {
         price: 120,
         quantity: 20,
         realPrice: 160,
-        image: 'http://localhost:8080/images/gamepad.png',
+        image: baseImageURL + 'gamepad.png',
     },
     {
         id: 2,
@@ -15,7 +17,7 @@ const product = {
         price: 960,
         quantity: 50,
         realPrice: 1160,
-        image: 'http://localhost:8080/images/gamekeyboard.png'
+        image: baseImageURL + 'gamekeyboard.png'
     },
     {
         id:3,
@@ -23,7 +25,7 @@ const product = {
         price: 370,
         quantity: 100,
         realPrice: 400,
-        image: 'http://localhost:8080/images/gamemonitor.png'
+        image: baseImageURL + 'gamemonitor.png'
     },
     {
         id: 4,
@@ -31,7 +33,7 @@ const product = {
         price: 375,
         quantity: 25,
         realPrice: 400,
-        image: 'http://localhost:8080/images/chair.png'
+        image: baseImageURL + 'chair.png'
     },
     {
         id: 5,
@@ -39,7 +41,7 @@ const product = {
         price: 260,
         quantity: 35,
         realPrice: 360,
-        image: 'http://localhost:8080/images/northcoat.png',
+        image: baseImageURL + 'northcoat.png',
     },
     {
         id: 6,
@@ -47,7 +49,7 @@ const product = {
         price: 960,
         quantity:  50,
         realPrice: 1160,
-        image: 'http://localhost:8080/images/Guccidufflebag.png',
+        image: baseImageURL + 'Guccidufflebag.png',
     },
     {
         id: 7,
@@ -55,21 +57,21 @@ const product = {
         price: 160,
         quantity: 15,
         realPrice: 170,
-        image: 'http://localhost:8080/images/rgbliquidcooler.png',
+        image: baseImageURL + 'rgbliquidcooler.png',
     },
     {
         id: 8,
         productName: "Small BookSelf",
         price: 360,
         quantity: 37,
-        image: 'http://localhost:8080/images/smallbookself.png'
+        image: baseImageURL + 'smallbookself.png'
     },
     {
         id: 9,
         productName: "Bree Dry Dog Food",
         price: 100,
         quantity: 15,
-        image: 'http://localhost:8080/images/breedfoog.png',
+        image: baseImageURL + 'breedfoog.png',
     }
     ,
     {
@@ -77,7 +79,7 @@ const product = {
         productName: "CANON EOS DSLR Camera",
         price: 360,
         quantity: 10,
-        image: 'http://localhost:8080/images/canono eos.png',
+        image: baseImageURL + 'canono eos.png',
     }
     ,
     {
@@ -85,7 +87,7 @@ const product = {
         productName: "ASUS FHD Gaming Laptop",
         price: 700,
         quantity: 15,
-        image: 'http://localhost:8080/images/asusFHD Gaming Laptop.png',
+        image: baseImageURL + 'asusFHD Gaming Laptop.png',
     }
     ,
     {
@@ -93,7 +95,7 @@ const product = {
         productName: "Curology Product Set",
         price: 500,
         quantity: 8,
-        image: 'http://localhost:8080/images/curology product.png',
+        image: baseImageURL + 'curology product.png',
     }
     ,
     {
@@ -101,7 +103,7 @@ const product = {
         productName: "Kids Electric Car",
         price: 200,
         quantity: 2,
-        image: 'http://localhost:8080/images/kids electric car.png',
+        image: baseImageURL + 'kids electric car.png',
     }
     ,
     {
@@ -109,7 +111,7 @@ const product = {
         productName: "Jr Zoom Soccer Cleats",
         price: 116,
         quantity: 13,
-        image: 'http://localhost:8080/images/soccer cleats.png',
+        image: baseImageURL + 'soccer cleats.png',
     }
     ,
     {
@@ -117,7 +119,7 @@ const product = {
         productName: "GP11 Shooter USB Gamepad",
         price: 660,
         quantity: 15,
-        image: 'http://localhost:8080/images/Gp11 USB gamepad.png',
+        image: baseImageURL + 'Gp11 USB gamepad.png',
     }
     ,
     {
@@ -125,7 +127,7 @@ const product = {
         productName: "Quilted Satin Jacket",
         price: 660,
         quantity: 10,
-        image: 'http://localhost:8080/images/Quilted Satin Jacket.png'
+        image: baseImageURL + 'Quilted Satin Jacket.png'
     }
    ]
 }

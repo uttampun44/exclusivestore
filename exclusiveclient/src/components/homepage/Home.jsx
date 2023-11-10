@@ -118,8 +118,8 @@ function Home() {
                            <div className='flash_sales_title self-end'>
                                <h1 className='text-secondary font-primary text-2xl font-semibold leading-10 mobile:text-base'>Flash Sales</h1>
                            </div>
-                           <div className='days_limit_offer flex gap-4 text-center'>
-                               <div className='offer_days bg-[#DB4444] p-1 rounded-md w-[75%]'>
+                           <div className='days_limit_offer flex gap-4 text-center w-[35%] mobile:w-[100%]'>
+                               <div className='offer_days bg-[#DB4444] p-1 rounded-md w-[100%]'>
                                    <p className='text-secondary font-secondary text-xs leading-5 font-medium text-white'>Days</p>
                                    <p className='text-secondary font-primary text-2xl font-bold leading-8  mobile:text-sm mobile:leading-4 text-white'>{date.days}</p>
                                </div>
