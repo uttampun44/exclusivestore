@@ -1,4 +1,4 @@
-const baseImageURL = process.env.NODE_ENV === 'production' ? 'https://your-production-domain.com/images/' : 'http://localhost:8080/images/';
+const baseImageURL = process.env.NODE_ENV === 'production' ? 'https://exclusivestore-backend.onrender.com/images/' : 'http://localhost:8080/images/';
 
 const product = {
    products : [
