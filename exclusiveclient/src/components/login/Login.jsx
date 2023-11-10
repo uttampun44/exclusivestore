@@ -66,7 +66,7 @@ function Login() {
 
                            <div className='login_second_cols desktoplarge:w-[30%] pl-[9vw] desktop:w-[40%] laptop:w-[45%] mobile:grid mobile:w-[80%] mobile:mx-auto mobile:pl-[unset] tablet:pl-[4vw]'>
                               <div className='login_create_account'>
-                                   <p className='font-secondary text-4xl font-medium leading-12 laptop:text-2xl tablet:text-xl tablet:leading-6'>Login into exclusive</p>
+                                   <p className='font-secondary text-4xl font-medium leading-12 laptop:text-2xl tablet:text-xl tablet:leading-6 mobile:text-3xl'>Login into exclusive</p>
                                    <p className='font-secondary text-base leading-5 font-normal pt-6'>Enter your details below</p>
                               </div>
 
