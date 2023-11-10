@@ -9,7 +9,7 @@ command npm install, and it will install npm in the exclusivestoreclient.
 docker should be installed
 
 
-# docker command
+# docker command  📣📣
 docker compose build command build the image of front and backend
 docker compose up run the container
 
@@ -19,6 +19,10 @@ docker compose up run the container
 Docker features
 
 Figma Design
+
+Tailwind CSS
+
+Material UI
 
 Authentication
 
@@ -34,7 +38,7 @@ Single Product from nodejs
 
 Authentication
 
-Sale offer day
+Sale offer day 💥💥
 
 😎😎
 # This is little advance than beginner project 
