@@ -34,7 +34,7 @@ function Cart() {
        <Header />
           <main>
                <section className='cart-cols'>
-                      <div className='cart_container max-w-bodyWidth mx-auto'>
+                      <div className='cart_container max-w-bodyWidth mx-auto tablet:p-4 mobile:px-4'>
                            <div>
                                {
                                   state.cart.length === 0 ? (
@@ -48,20 +48,20 @@ function Cart() {
                                     <div>
                                            <div className='single_product_details_row grid grid-cols-5 mt-16 py-6 border-2 shadow-md justify-center items-center text-center rounded-sm'>
                                                   <div className='single_product_title'>
-                                                       <p className='single_product_name font-secondary font-semibold text-2xl leading-10'>Product Name</p>
+                                                       <p className='single_product_name font-secondary font-semibold text-2xl leading-10 mobile:leading-4 mobile:text-xs'>Product Name</p>
                                                   </div>
                                                   <div className='single_product_price '>
-                                                       <p className='font-secondary font-semibold text-2xl leading-10'>Price</p>
+                                                       <p className='font-secondary font-semibold text-2xl leading-10 mobile:leading-4 mobile:text-xs'>Price</p>
                                                   </div>
                                                   <div className='single_product_quantity '>
-                                                       <p className='font-secondary font-semibold text-2xl leading-10'>Quantity</p>
+                                                       <p className='font-secondary font-semibold text-2xl leading-10 mobile:leading-4 mobile:text-xs'>Quantity</p>
                                                   </div>
                                                   <div className='single_product_subtotal '>
-                                                       <p className='font-secondary font-semibold text-2xl leading-10'>Subtotal</p>
+                                                       <p className='font-secondary font-semibold text-2xl leading-10 mobile:leading-4 mobile:text-xs'>Subtotal</p>
                                                   </div>
 
                                                   <div className='delete_item'>
-                                                     <p className='font-secondary font-semibold text-2xl leading-10'>Remove Item</p>
+                                                     <p className='font-secondary font-semibold text-2xl leading-10 mobile:leading-4 mobile:text-xs'>Remove Item</p>
                                                   </div>
                                            </div>
                                         {
@@ -72,14 +72,14 @@ function Cart() {
                                                     <div className='cart_container' key={singleproduct.id}>
                                                       <div className='single_product_row grid grid-cols-5 text-center shadow-lg mt-16 py-3 items-center border-2 rounded-md'>
                                                            <div className='single_product_img flex justify-center items-center pl-4 gap-2'>
-                                                             <img src={singleproduct.image} alt='singleproduct_image' loading='lazy' className='w-[30%] h-[5vw] object-contain mobile:w-[60px] mobile:h-[60px]'/> <span className='font-secondary text-base leading-6 font-medium'>{singleproduct.productName}</span>
+                                                             <img src={singleproduct.image} alt='singleproduct_image' loading='lazy' className='w-[30%] h-[5vw] object-contain mobile:w-[60px] mobile:h-[60px]'/> <span className='font-secondary text-base leading-6 font-medium mobile:text-xs'>{singleproduct.productName}</span>
                                                           </div>
 
                                                          <div className='single_product_price'>
-                                                           <p className='font-secondary text-base leading-6 font-medium'>$ {singleproduct.price}</p>
+                                                           <p className='font-secondary text-base leading-6 font-medium mobile:text-xs'>$ {singleproduct.price}</p>
                                                           </div>
 
-                                                          <div className='single_product_quantity py-2 px-1 border-2 w-[30%] mx-auto flex items-center justify-center gap-2'>
+                                                          <div className='single_product_quantity py-2 px-1 border-2 w-[30%] mx-auto flex items-center justify-center gap-2 mobile:w-[75%]'>
                                                              <div className='quantity_text'>
                                                                  <p className='font-secondary text-base leading-6 font-medium'>{singleproduct.quantity}</p>
                                                              </div>
@@ -103,12 +103,12 @@ function Cart() {
 
                                             })
                                         }
-                                        <div className='cart_total retur_to_shop flex justify-between my-10'>
+                                        <div className='cart_total return_to_shop flex justify-between my-10 mobile:grid mobile:gap-4 mobile:justify-center'>
                                             <div className='return_to_shop py-4'>
                                                 <Link className='border-2 py-4 px-4' to='/products'>Return To Shop</Link>
                                             </div>
 
-                                            <div className='cart_total w-[40%] py-4 px-4 border-2'>
+                                            <div className='cart_total w-[40%] py-4 px-4 border-2 mobile:w-[100%]'>
                                                 <p>Cart Total</p>
                                                 <div className='cart_total_row'>
                                                     <div className='subtotal flex items-center justify-between border-b-2 my-4 py-4'>
