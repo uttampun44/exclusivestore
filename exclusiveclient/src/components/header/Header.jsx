@@ -32,12 +32,18 @@ function Header() {
     const filtered = products.filter((product) =>
     product.productName.toLowerCase().includes(searchValue.toLowerCase())
        );
-       if(filtered.length > 0){
-          setFilter(filtered);
-          setShowProduct(true)
+
+       if(searchValue === ""){
+        alert("Please enter the product name")
        }else{
-          alert("Product Not Found")
-       }
+          if(filtered.length > 0){
+               setFilter(filtered);
+                setShowProduct(true)
+             }else{
+              alert("Product Not Found")
+          }
+    }
+
   }
 
   const closeSearch = () =>{
@@ -99,7 +105,7 @@ function Header() {
                                                    <div  key={product.id} className='header_product_card'>
                                                      <p className='text-white mb-4 font-secondary text-base font-medium leading-6'>{product.productName}</p>
                                                      <img src={product.image} alt='product_name' />
-                                                     <p className='text-white mt-4 font-secondary text-base font-medium leading-6'>{product.price}</p>
+                                                     <p className='text-white mt-4 font-secondary text-base font-medium leading-6'>${product.price}</p>
                                                      <button className='text-white bg-[#DB4444] px-4 mt-3 py-3 rounded-sm font-secondary text-base font-medium leading-6' onClick={closeSearch}>Close Search</button>
                                                    </div>
                                          ))}

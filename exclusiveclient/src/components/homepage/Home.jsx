@@ -23,7 +23,7 @@ function Home() {
 
    const dateSales = () => {
 
-    let saleDay = new Date("2023/11/20");
+    let saleDay = new Date("2023/11/30");
 
     let currentDate = new Date();
 
