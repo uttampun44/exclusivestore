@@ -26,7 +26,7 @@ function Products() {
     <Header />
      <main>
           <section className='product_section'>
-               <div className='product_container max-w-bodyWidth mx-auto'>
+               <div className='product_container max-w-bodyWidth mx-auto min-h-[100vh]'>
                    <div className='product_cols grid grid-cols-4 gap-y-4 my-16 py-14 gap-x-4 mobile:px-2 tablet:px-2'>
                    {
                         shuffledProducts.map((productgallery) =>{
